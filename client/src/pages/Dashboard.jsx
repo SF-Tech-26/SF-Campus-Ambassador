@@ -2,7 +2,15 @@ import React from "react";
 import ParticleBackground from "../components/ParticleBackground";
 import GlassCard from "../components/GlassCard";
 
+// import FormPage from "./FormPage";  
+import { useNavigate } from "react-router-dom";
+
+
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+
+  
   const tasks = [
     { name: "Get participant to SF", pts: 30, diff: "Hard" },
     { name: "Suggest Idea", pts: 5, diff: "Easy" },
@@ -26,7 +34,7 @@ const Dashboard = () => {
 
         {/* Top Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-10">
-          <GlassCard><p className="text-center text-base sm:text-lg font-semibold">View Profile</p></GlassCard>
+         <button  onClick={() => navigate("/viewprofile")}  ><GlassCard><p className="text-center text-base sm:text-lg font-semibold">View Profile</p></GlassCard></button> 
           <GlassCard><p className="text-center text-base sm:text-lg font-semibold">#1 Your Standings</p></GlassCard>
           <GlassCard><p className="text-center text-base sm:text-lg font-semibold">Guidelines</p></GlassCard>
           <GlassCard><p className="text-center text-base sm:text-lg font-semibold">Leaderboard</p></GlassCard>
@@ -49,7 +57,7 @@ const Dashboard = () => {
                 <tr key={i} className="border-b border-white/10 hover:bg-white/10 transition">
                   <td className="py-3">{t.name}</td>
                   <td>
-                    <button className="bg-cyan-500 hover:bg-cyan-600 px-3 sm:px-4 py-1 rounded text-xs sm:text-sm">
+                    <button onClick={() => navigate("/form")}   className="bg-cyan-500 hover:bg-cyan-600 px-3 sm:px-4 py-1 rounded text-xs sm:text-sm">
                       Click Here
                     </button>
                   </td>
@@ -64,7 +72,7 @@ const Dashboard = () => {
               ))}
             </tbody>
           </table>
-          <p className="mt-4 text-xs sm:text-sm text-gray-300 text-center">Overall Progress: 0/4 Complete</p>
+          <p className="mt-4 text-xs sm:text-sm text-gray-300 text-center">Overall Progress: 0/4 Complete </p>
         </div>
       </div>
     </div>
