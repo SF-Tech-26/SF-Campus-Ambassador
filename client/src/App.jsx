@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
 import HomePage from "./pages/HomePage";
+import Testimonials from './components/testimonials2'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/form" element={<FormPage />} />
         <Route path="/homepage" element={<HomePage />} />
+        <Route path="/testimonials" element={<Testimonials />} />
       </Routes>
 
     </Router>
