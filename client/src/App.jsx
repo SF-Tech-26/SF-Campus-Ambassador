@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+import Testimonials from './components/testimonials2'
 
   return (
     <nav className="absolute top-0 w-full flex justify-between p-4 text-white z-20 font-semibold">
