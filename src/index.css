@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/postcss";
+
+/* 🌌 PAGE BACKGROUND */
+body {
+  background: url("/page-bg.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  font-family: 'Combo', cursive;
+  overflow: hidden;
+}
+
+/* 🖋️ FONTS */
+h1,
+.pill {
+  font-family: 'Cinzel', serif !important;
+  font-size: 60px;
+  margin-top: 80px;
+  }
+
+h2 {
+  font-family: 'Denk One', sans-serif;
+}
+
+/* ✨ HEADING GLOW */
+.text-glow {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+/* 🌊 FLOAT ANIMATION */
+@keyframes floatUpDown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* 💫 FLOATING PILL */
+.pill {
+  background: url("/pill-bg.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 9999px;
+  padding: 10px 45px;
+  color: #fff;
+  font-size: 1.1rem;
+  box-shadow: 0 0 14px rgba(140, 84, 255, 0.35);
+  animation: floatUpDown 3.5s ease-in-out infinite;
+  margin-top: -10px; /* ⬅ closer to heading */
+}
+
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.8rem;
+  padding-top: 220px;  /* ⬅ lowered from 280px to raise everything */
+  padding-bottom: 200px; /* ⬅ increased from 160px for bottom breathing room */
+  max-width: 1150px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+/* 🟣 CARD */
+.perk-card {
+  background: url("/card-bg.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  width: 260px; /* slightly smaller for neatness */
+  height: 190px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perk-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(124, 58, 237, 0.45);
+}
+
+/* 🎁 ICON BOX */
+.icon-box {
+  width: 65px;
+  height: 65px;
+  border-radius: 20px;
+  background: url("/icon-bg.png") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: -8px;
+  margin-bottom: 6px;
+  box-shadow: 0 0 15px rgba(140, 84, 255, 0.4);
+}
+
+/* glowing edge */
+.icon-box::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #4fc3ff, #b46cff);
+  z-index: -1;
+}
+
+.icon-box svg {
+  color: #fff;
+  stroke-width: 1.8;
+}
+
+/* 🧾 CARD TEXT */
+.perk-card h2 {
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+  letter-spacing: 0.6px;
+}
+
+.perk-card p {
+  font-size: 0.83rem;
+  line-height: 1.25rem;
+  padding: 0 18px;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 55px 50px;
+  justify-items: center;
+  align-items: center;
+  margin-top: -20px; /* ⬅ move cards up (try -10 to -40px range) */
+  margin-bottom: 100px;
+}
+
+
+/* 🧭 RESPONSIVE */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+  }
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .perk-card {
+    width: 280px;
+    height: 190px;
+  }
+}
