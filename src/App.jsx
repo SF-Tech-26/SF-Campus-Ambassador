@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Package, Gift, Medal, Trophy, Briefcase, Ticket } from "lucide-react";
 
 export default function App() {
@@ -34,10 +35,32 @@ export default function App() {
     }
   ];
 
+  // 🌠 SCROLL GLIDE EFFECT (responsive + staggered)
+  useEffect(() => {
+    const cards = document.querySelectorAll(".perk-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // stagger delay for cinematic effect
+            entry.target.style.animationDelay = `${index * 0.15}s`;
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target); // animate once
+          }
+        });
+      },
+      {
+        threshold: window.innerWidth < 768 ? 0.1 : 0.2 // earlier trigger for mobile
+      }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="wrapper px-4">
-      <h1 className="text-5xl mb-3 text-glow font-serif">What You’ll Get</h1>
-
+      <h1 className="text-5xl text-glow">What You’ll Get</h1>
       <p className="pill mb-8">
         Being an ambassador comes with incredible perks and opportunities
       </p>
