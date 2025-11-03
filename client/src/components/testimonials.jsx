@@ -10,37 +10,42 @@ function Testimonials(){
             {
             id: 1,
             title: "Amazing Experience",
-            text: "This product completely transformed how we work. The team is incredibly responsive and the results speak for themselves.",
+            description: "This product completely transformed how we work. The team is incredibly responsive and the results speak for themselves. Every interaction has been seamless and professional.",
             author: "Sarah Johnson",
-            role: "CEO, TechCorp"
+            role: "CEO, TechCorp",
+            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
         },
         {
             id: 2,
             title: "Highly Recommend",
-            text: "Outstanding service and quality. They exceeded our expectations in every way possible. A true game-changer for our business.",
+            description: "Outstanding service and quality. They exceeded our expectations in every way possible. A true game-changer for our business that delivered measurable results.",
             author: "Michael Chen",
-            role: "Product Manager"
+            role: "Product Manager, InnovateCo",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
         },
         {
             id: 3,
             title: "Exceptional Quality",
-            text: "The attention to detail and commitment to excellence is unmatched. We've seen incredible improvements since partnering with them.",
+            description: "The attention to detail and commitment to excellence is unmatched. We've seen incredible improvements since partnering with them. Truly exceptional work.",
             author: "Emily Rodriguez",
-            role: "Marketing Director"
+            role: "Marketing Director, BrandWorks",
+            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop"
         },
         {
             id: 4,
             title: "Outstanding Results",
-            text: "Professional, efficient, and results-driven. They delivered beyond what we thought was possible. Absolutely fantastic work.",
+            description: "Professional, efficient, and results-driven. They delivered beyond what we thought was possible. Absolutely fantastic work that transformed our operations.",
             author: "David Kim",
-            role: "Founder, StartupX"
+            role: "Founder, StartupX",
+            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop"
         },
         {
             id: 5,
             title: "Best Decision Ever",
-            text: "Working with this team has been the best investment we've made. Their expertise and dedication are truly remarkable.",
+            description: "Working with this team has been the best investment we've made. Their expertise and dedication are truly remarkable. Can't recommend them enough!",
             author: "Lisa Thompson",
-            role: "Operations Manager"
+            role: "Operations Manager, LogiTech",
+            image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=500&fit=crop"
         }
     ]
     //end-----------------------------------------------------------------------------------------------------------------------------------
@@ -79,8 +84,8 @@ function Testimonials(){
     return(
         <>
         {/*Main Container */}
-        <div className="bg-gradient-to-br from-purple-950 via-purple-900 to-indigo-950 min-h-screen w-full flex flex-col items-center justify-center py-16 px-4">
-            <h1 className="text-5xl md:text-6xl font-bold font-serif text-center mb-16 underline text-white">Testimonials</h1>
+        <div className="bg-gradient-to-br from-#1b1c1c via-#322f38 to-indigo-950 flex flex-col h-full w-full justify-center items-center py-16 px-4">
+            <h1 className="text-5xl md:text-6xl font-bold text-center mb-16 text-white">Testimonials</h1>
             {/*main content */}
             <div className="relative w-full max-w-6xl h-130 flex items-center justify-center">
             {/*slider */}
@@ -101,23 +106,23 @@ function Testimonials(){
 
                     //styleing for each card-------------------------------
                 let getCardStyle=()=>{
-                    let baseStyle = "absolute h-120 w-130 bg-white/10 backdrop-blur-md rounded-2xl p-8 transition all duration-500 ease-in-out border border-white/20"
+                    let baseStyle = "absolute h-150 w-90 sm:h-120 sm:w-130 bg-black/10 backdrop-blur-md rounded-2xl p-8 transition all duration-500 ease-in-out border border-white/20"
                     //index depended styling---------------
                     if(position  == 0)
                     {
                         return (`${baseStyle} opacity-100 translate-x-0 scale:60 ms:scale-100 z-30`);
                     }
                     else if(position == 1){
-                        return (`${baseStyle} opacity-60 translate-x-80 scale:50 ms:scale-90 z-20 `);
+                        return (`${baseStyle} opacity-0 translate-x-80 scale:50 ms:scale-90 z-20 md:opacity-60`);
                     }
                     else if (position ==2){
-                        return (`${baseStyle} opacity-30 translate-x-96 scale: 45 ms:scale-75 z-10 `);
+                        return (`${baseStyle} opacity-0 translate-x-96 scale: 45 ms:scale-75 z-10 md:opacity-30`);
                     }
                     else if(position == -1){
-                        return (`${baseStyle} opacity-60 -translate-x-80 scale:50 ms:scale-90 z-20 `);
+                        return (`${baseStyle} opacity-0 -translate-x-80 scale:50 ms:scale-90 z-20 md:opacity-60`);
                     }
                     else if (position == -2){
-                        return (`${baseStyle} opacity-30 -translate-x-96 scale:45 ms:scale-75 z-10 `);
+                        return (`${baseStyle} opacity-0 -translate-x-96 scale:45 ms:scale-75 z-10 md:opacity-30`);
                     }
                     else{
                         return (`${baseStyle} opacity-0 scale-75 z-0 `);
@@ -129,9 +134,13 @@ function Testimonials(){
                         <div key = {card.id} className = {getCardStyle()} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                             <div className="flex flex-col h-full justify-between text-white">
                                 <div>
-                                <div className="h-50 w-50 bg-amber-100 translate-x-35 border-white/20 rounded-full -translate-y-15"></div>
-                                <h1 className="text-2xl font-bold mb-4 text-purple-300">{card.title}</h1>
-                                <p className="text-base leading-relaxed mb-6 text-gray-200">{card.text}</p>
+                                <div className="h-35 w-35 sm:h-50 sm:w-50 bg-amber-100 translate-x-20 sm:translate-x-35 border-white/20 rounded-full -translate-y-0 sm:-translate-y-15">
+                                    <img src = {card.image}
+                                    alt={card.author}
+                                    className="h-full w-full object-cover rounded-full"/>
+                                </div>
+                                <h1 className="pt-15 sm:pt-0 text-2xl font-bold mb-4 text-purple-300">{card.title}</h1>
+                                <p className="text-base leading-relaxed mb-6 text-gray-200">{card.description}</p>
                                 </div>
                             <div className="border-t border-white/20 pt-4">
                                 <p className="font-semibold text-lg">{card.author}</p>
