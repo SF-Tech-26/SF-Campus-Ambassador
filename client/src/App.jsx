@@ -10,11 +10,11 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Testimonials from './components/testimonials'
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-import Testimonials from './components/testimonials2'
 
   return (
     <nav className="absolute top-0 w-full flex justify-between p-4 text-white z-20 font-semibold">
@@ -72,6 +72,7 @@ export default function App() {
           <Route path="/viewprofile" element={<ViewProfile />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="/testimonials" element={<Testimonials />}/>
         </Routes>
       </Router>
     </AuthProvider>
