@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
+import Testimonials from './components/testimonials2'
 
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
