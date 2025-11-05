@@ -1,4 +1,9 @@
 import React, { useEffect,useState} from "react";
+import Utkarsh from "./images/Utkarsh Kala.png";
+import Aditya from "./images/Aditya Saurav.png";
+import Raghav from "./images/Raghav Dogra.png";
+import Siddhant from "./images/Siddhant Sharma.png";
+import Ayushi from "./images/Ayushi Baijal.png"
 
 function Testimonials(){
 
@@ -11,9 +16,9 @@ function Testimonials(){
             id: 1,
             title: "Amazing Experience",
             description: "This product completely transformed how we work. The team is incredibly responsive and the results speak for themselves. Every interaction has been seamless and professional.",
-            author: "Sarah Johnson",
+            author: "Utkarsh Kala",
             role: "CEO, TechCorp",
-            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
+            image: Utkarsh,
         },
         {
             id: 2,
@@ -21,7 +26,7 @@ function Testimonials(){
             description: "Outstanding service and quality. They exceeded our expectations in every way possible. A true game-changer for our business that delivered measurable results.",
             author: "Michael Chen",
             role: "Product Manager, InnovateCo",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
+            image: Aditya,
         },
         {
             id: 3,
@@ -29,7 +34,7 @@ function Testimonials(){
             description: "The attention to detail and commitment to excellence is unmatched. We've seen incredible improvements since partnering with them. Truly exceptional work.",
             author: "Emily Rodriguez",
             role: "Marketing Director, BrandWorks",
-            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop"
+            image: Raghav,
         },
         {
             id: 4,
@@ -37,7 +42,7 @@ function Testimonials(){
             description: "Professional, efficient, and results-driven. They delivered beyond what we thought was possible. Absolutely fantastic work that transformed our operations.",
             author: "David Kim",
             role: "Founder, StartupX",
-            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop"
+            image: Siddhant,
         },
         {
             id: 5,
@@ -45,7 +50,7 @@ function Testimonials(){
             description: "Working with this team has been the best investment we've made. Their expertise and dedication are truly remarkable. Can't recommend them enough!",
             author: "Lisa Thompson",
             role: "Operations Manager, LogiTech",
-            image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=500&fit=crop"
+            image: Ayushi,
         }
     ]
     //end-----------------------------------------------------------------------------------------------------------------------------------
@@ -134,7 +139,7 @@ function Testimonials(){
                         <div key = {card.id} className = {getCardStyle()} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                             <div className="flex flex-col h-full justify-between text-white">
                                 <div>
-                                <div className="h-35 w-35 sm:h-50 sm:w-50 bg-amber-100 translate-x-20 sm:translate-x-35 border-white/20 rounded-full -translate-y-0 sm:-translate-y-15">
+                                <div className="h-35 w-35 sm:h-50 sm:w-50 bg-amber-100 translate-x-20 sm:translate-x-35 border-white/20 rounded-full translate-y-5 sm:-translate-y-13">
                                     <img src = {card.image}
                                     alt={card.author}
                                     className="h-full w-full object-cover rounded-full"/>
