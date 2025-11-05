@@ -17,7 +17,7 @@ body {
       font-family: Poppins;
       font-size: 2.5rem;
       margin-top: 60px;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
     .h2-name{
         font-family: Poppins;
@@ -46,9 +46,10 @@ body {
 
 
     .team-card {
-      background-color: #111;
+      background-color: rgba(0, 0, 0, 0.8);;
       border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(255,255,255,0.15);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 250px;
       height: 340px;
       padding: 20px 15px;
@@ -60,12 +61,19 @@ body {
       border-radius: 15px;
       object-fit: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
 
     .team-card:hover{
         transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(220, 70, 70, 0.8);
         transition: transform 0.3s ease;
     }
+    .team-card:hover img {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+
     .social-icons {
       display: block;
       justify-content: center;
