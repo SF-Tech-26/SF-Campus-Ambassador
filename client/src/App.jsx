@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import Testimonials from './components/testimonials2'
+import FAQ from "./pages/FAQ";
 
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
@@ -11,17 +12,22 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Testimonials from './components/testimonials'
+// Removed duplicate import: testimonials was already imported above as './components/testimonials2'
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return (
-    <nav className="absolute top-0 w-full flex justify-between p-4 text-white z-20 font-semibold">
-      <Link to="/" className="hover:text-cyan-400 transition">
-        Home
-      </Link>
+    <nav className="absolute top-0 w-full flex items-center justify-between p-4 text-white z-20 font-semibold">
+      <div className="flex gap-6 items-center">
+        <Link to="/" className="hover:text-cyan-400 transition">
+          Home
+        </Link>
+        <Link to="/faq" className="hover:text-cyan-400 transition">
+          FAQs
+        </Link>
+      </div>
 
       {token ? (
         <button
@@ -73,6 +79,7 @@ export default function App() {
           <Route path="/viewprofile" element={<ViewProfile />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />}/>
         </Routes>
       </Router>
