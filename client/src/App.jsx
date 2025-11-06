@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
-import Testimonials from './components/testimonials2'
 
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
@@ -11,7 +10,7 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Testimonials from './components/testimonials'
+import Testimonials from './components/testimonials';
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
