@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ParticleBackground from "../components/ParticleBackground";
 import GlassCard from "../components/GlassCard";
 import { AuthContext } from "../context/AuthContext";
@@ -40,6 +40,31 @@ function Navbar() {
 }
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const { token } = useContext(AuthContext);
+  const [submittedData, setSubmittedData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch dashboard data
+  useEffect(() => {
+    const getData = async () => {
+      if (!token) return;
+      try {
+        setLoading(true);
+        const data = await fetchSubmittedData(token);
+        setSubmittedData(data);
+        setError(null);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch dashboard data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, [token]);
+
   const tasks = [
     { name: "Get participant to SF", pts: 30, ptsGained: 0 },
     { name: "Suggest Idea", pts: 5, ptsGained: 0 },
@@ -47,6 +72,23 @@ const Dashboard = () => {
     { name: "Suggest Venue", pts: 5, ptsGained: 0 },
   ];
 
+
+  // Show loading and error states
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white text-lg">
+        Loading dashboard...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-400 text-lg">
+        {error}
+      </div>
+    );
+  }
 
   return (
     <>

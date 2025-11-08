@@ -1,0 +1,81 @@
+/* client/src/pages/AboutPage.css */
+.about-root{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding-bottom: 60px;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+  padding: 60px 80px;
+  align-items: flex-start;
+}
+
+/* Left content (text) */
+.about-left{
+  flex: 1.4;
+  max-width: 65%;
+}
+
+.about-title{
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  margin: 0 0 10px 0;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.springfest{
+  font-family: "Fredericka the Great", cursive;
+  color: #ff3b2e;
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+  font-size: 46px;
+}
+
+/* paragraph text */
+.about-text {
+  font-family: "Merriweather", serif;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-top: 15px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Right stat column */
+.about-right{
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: flex-end;
+}
+
+.stat-card{
+  background: rgba(6,60,20,0.7);
+  min-width: 250px;
+  padding: 18px 28px;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+.stat-number{
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  color: #fff;
+}
+
+.stat-label{
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #d9a74b;
+  margin-top: 6px;
+}
