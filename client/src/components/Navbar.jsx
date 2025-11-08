@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * HamburgerIcon component for the mobile menu toggle.
@@ -16,17 +17,17 @@ const HamburgerIcon = () => (
 const Navbar = () => {
     // State to manage the mobile menu's open/closed status
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const navigate = useNavigate();
     // Navigation links data
     const navLinks = [
-        { name: 'HOME', href: '#', active: true },
-        { name: 'ABOUT US', href: '#' },
-        { name: 'CA PROGRAM', href: '#' },
-        { name: 'PERKS', href: '#' },
-        { name: 'RESPONSIBILITY', href: '#' },
-        { name: 'TESTIMONIALS', href: '#' },
-        { name: 'TEAM', href: '#' },
-        { name: 'FAQ', href: '#' },
+        { name: 'HOME', href: '#home', active: true },
+        { name: 'ABOUT US', href: '#about' },
+        { name: 'CA PROGRAM', href: '#caprogram' },
+        { name: 'PERKS', href: '#perks' },
+        { name: 'RESPONSIBILITY', href: '#responsibility' },
+        { name: 'TESTIMONIALS', href: '#tesimonials' },
+        { name: 'TEAM', href: '#team' },
+        { name: 'FAQ', href: '#faq' },
     ];
 
     return (
@@ -39,9 +40,8 @@ const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className={`nav-link-hover hover:text-[#E83030] px-3 py-2 ${
-                                    link.active ? 'nav-link-active text-[#E83030]' : ''
-                                }`}
+                                className={`nav-link-hover hover:text-[#E83030] px-3 py-2 ${link.active ? 'nav-link-active text-[#E83030]' : ''
+                                    }`}
                                 style={{
                                     fontWeight: 500,
                                     animation: 'slideDown 0.5s ease-out forwards',
@@ -56,19 +56,21 @@ const Navbar = () => {
                     </div>
                     {/* Desktop Login on the right */}
                     <div className="flex-shrink-0">
-                        <a
-                            href="#"
-                            className="inline-block text-m font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors"
+                        <button
+
+                            className="inline-block text-m font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors cur"
                             style={{
                                 animation: 'slideDown 0.5s ease-out forwards',
                                 animationDelay: `${navLinks.length * 100}ms`,
                                 opacity: 0,
                                 transform: 'translateY(-20px)'
                             }}
-                            Navigate
+                            onClick={() => {
+                                navigate("/signin")
+                            }}
                         >
                             Login / SignUp
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -93,66 +95,70 @@ const Navbar = () => {
                 {/* Hamburger button */}
                 <button
                     id="menu-toggle"
-                    className={`fixed top-4 left-4 z-50 p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 bg-black text-white transition-opacity duration-300 ${
-                        isMenuOpen ? 'opacity-0' : 'opacity-100'
-                    }`}
+                    className={`fixed top-4 left-4 z-50 p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 bg-black text-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'
+                        }`}
                     aria-label="Toggle menu"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                     <HamburgerIcon />
                 </button>
 
+                {/* Login button for mobile - top right corner */}
+                <button
+                    className="fixed top-4 right-4 10 text-xs sm:text-sm font-medium bg-white text-black px-3 py-2 sm:px-4 sm:py-2 cursor-pointer rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors"
+                    onClick={() => {
+                        navigate("/signin")
+                    }}
+                >
+                    Login / SignUp
+                </button>
+
+
                 {/* Sidebar container */}
                 <div
-                    className={`${
-                        isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-                    } fixed top-0 left-0 h-full w-64 bg-black text-white transition-transform duration-300 ease-in-out z-40 shadow-lg`}
+                    className={`${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+                        } fixed top-0 left-0 h-full w-[220px] bg-black/40 backdrop-blur-md text-white transition-transform duration-300 ease-in-out z-40 shadow-lg pointer-events-auto`}
+                    style={{
+                        borderRight: '1px solid rgba(255, 255, 255, 0.1)', // optional subtle edge line
+                    }}
                 >
-                    {/* Links container */}
-                    <div className="flex flex-col h-full py-8 px-4">
+                    {/* Sidebar content */}
+                    <div className="flex flex-col h-full py-8 px-5">
                         {/* Navigation Links */}
-                        <div className="flex flex-col space-y-4 text-2xl text-gray-300">
+                        <div className="flex flex-col space-y-3 text-lg text-gray-300">
                             {navLinks.map((link, index) => (
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className={`hover:text-[#E83030] px-2 py-3 rounded-md 
-                                    ${isMenuOpen 
-                                        ? 'translate-x-0 opacity-100' 
-                                        : '-translate-x-8 opacity-0'
-                                    } ${
-                                        link.active ? 'text-[#E83030] bg-gray-900' : ''
-                                    }`}
+                                    className={`hover:text-[#E83030] px-2 py-2 rounded-md transition-all
+            ${isMenuOpen
+                                            ? 'translate-x-0 opacity-100'
+                                            : '-translate-x-8 opacity-0'
+                                        } 
+            ${link.active ? 'text-[#E83030] bg-white/10' : ''}`}
                                     style={{
                                         fontWeight: 500,
                                         transition: 'opacity 300ms, transform 300ms',
-                                        transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms'
+                                        transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms',
                                     }}
                                 >
                                     {link.name}
                                 </a>
                             ))}
                         </div>
-
-                        {/* Login button at bottom */}
-                        <div className="mt-auto">
-                            <a
-                                href="#"
-                                className="block text-sm font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-gray-200 transition-colors text-center"
-                            >
-                                Login / SignUp
-                            </a>
-                        </div>
                     </div>
                 </div>
+
+
 
                 {/* Overlay for mobile - closes sidebar when clicking outside */}
                 {isMenuOpen && (
                     <div
-                        className="fixed inset-0 bg-black bg-opacity-50 z-30"
+                        className="fixed inset-0 bg-black/30 backdrop-blur-[2px] z-30 transition-opacity duration-300"
                         onClick={() => setIsMenuOpen(false)}
                     ></div>
                 )}
+
             </div>
         </nav>
     );
