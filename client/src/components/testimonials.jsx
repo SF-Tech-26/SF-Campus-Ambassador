@@ -1,4 +1,9 @@
 import React, { useEffect,useState} from "react";
+import Utkarsh from "./images/Utkarsh Kala.png";
+import Aditya from "./images/Aditya Saurav.png";
+import Raghav from "./images/Raghav Dogra.png";
+import Siddhant from "./images/Siddhant Sharma.png";
+import Ayushi from "./images/Ayushi Baijal.png"
 
 function Testimonials(){
 
@@ -9,43 +14,43 @@ function Testimonials(){
     const cards = [
             {
             id: 1,
-            title: "Amazing Experience",
-            description: "This product completely transformed how we work. The team is incredibly responsive and the results speak for themselves. Every interaction has been seamless and professional.",
-            author: "Sarah Johnson",
-            role: "CEO, TechCorp",
-            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
+            title: "",
+            description: "Where the normal Fests remain sparkling and vibrant, I found Spring Fest to be balanced where at one end you‟ll find the Sparks the other side keeps showering the Beauty of the existence of certain aspects of Generations",
+            author: "Utkarsh Kala",
+            role: "",
+            image: Utkarsh,
         },
         {
             id: 2,
-            title: "Highly Recommend",
-            description: "Outstanding service and quality. They exceeded our expectations in every way possible. A true game-changer for our business that delivered measurable results.",
-            author: "Michael Chen",
-            role: "Product Manager, InnovateCo",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
+            title: "",
+            description: "I worked as a campus ambassador of my college at spring Fest 2025, IIT kharagpur. I really enjoyed working with the people of this organisation. I had lot of fun tasks to do and really liked doing them all. I would like to thank spring fest for giving me this opportunity.",
+            author: "Aditya Saurav",
+            role: "",
+            image: Aditya,
         },
         {
             id: 3,
-            title: "Exceptional Quality",
-            description: "The attention to detail and commitment to excellence is unmatched. We've seen incredible improvements since partnering with them. Truly exceptional work.",
-            author: "Emily Rodriguez",
-            role: "Marketing Director, BrandWorks",
-            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop"
+            title: "",
+            description: "Spring fest 2025 was an amazing experience for me. It was wonderful to be a part of something this big. The diversity of events made the fest, a lot more fun and engaging making it a memorable experience. Hope to be a part of Spring Fest.",
+            author: "Raghav Dogra",
+            role: "",
+            image: Raghav,
         },
         {
             id: 4,
-            title: "Outstanding Results",
-            description: "Professional, efficient, and results-driven. They delivered beyond what we thought was possible. Absolutely fantastic work that transformed our operations.",
-            author: "David Kim",
-            role: "Founder, StartupX",
-            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop"
+            title: "",
+            description: "Spring Fest was a memorable experience for me. Working for such a huge fest was a really great experience. All the events held by Spring Fest were great and amazing.It was amazing to be there. I wish to be in SPRING FEST again.",
+            author: "Siddhant Sharma",
+            role: "",
+            image: Siddhant,
         },
         {
             id: 5,
-            title: "Best Decision Ever",
-            description: "Working with this team has been the best investment we've made. Their expertise and dedication are truly remarkable. Can't recommend them enough!",
-            author: "Lisa Thompson",
-            role: "Operations Manager, LogiTech",
-            image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=500&fit=crop"
+            title: "",
+            description: "I just wanted to share a quick note and let you know that SF team did a really good job. I‟m glad I decided to participate in Spring Fest with you guys. It's really great how beautifully your team conducted the entire event online.",
+            author: "Ayushi Baijal",
+            role: "",
+            image: Ayushi,
         }
     ]
     //end-----------------------------------------------------------------------------------------------------------------------------------
@@ -134,7 +139,7 @@ function Testimonials(){
                         <div key = {card.id} className = {getCardStyle()} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                             <div className="flex flex-col h-full justify-between text-white">
                                 <div>
-                                <div className="h-35 w-35 sm:h-50 sm:w-50 bg-amber-100 translate-x-20 sm:translate-x-35 border-white/20 rounded-full -translate-y-0 sm:-translate-y-15">
+                                <div className="h-35 w-35 sm:h-50 sm:w-50 bg-amber-100 translate-x-20 sm:translate-x-35 border-white/20 rounded-full translate-y-5 sm:-translate-y-13">
                                     <img src = {card.image}
                                     alt={card.author}
                                     className="h-full w-full object-cover rounded-full"/>
