@@ -1,11 +1,12 @@
 import React from "react";
 
-const GlassCard = ({ children }) => {
-  return (
-    <div className="glass p-4 sm:p-6 rounded-xl hover:scale-105 transition-transform duration-300">
-      {children}
-    </div>
-  );
-};
+function GlassCard({ icon, children }) {
+            return (
+                <div className="panel-style p-6 text-center text-white transition-all duration-300 hover:bg-gray-800/80 cursor-pointer h-full">
+                    <div className="text-4xl mb-3">{icon}</div>
+                    <div className="font-semibold">{children}</div>
+                </div>
+            );
+        }
 
 export default GlassCard;
