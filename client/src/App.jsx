@@ -2,11 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
-<<<<<<< HEAD
-import Testimonials from './components/testimonials2'
 import FAQ from "./pages/FAQ";
-=======
->>>>>>> 56e55dadbe8fa564f2f5d6549fa85b31b5b4618c
 
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
@@ -15,11 +11,7 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-<<<<<<< HEAD
-// Removed duplicate import: testimonials was already imported above as './components/testimonials2'
-=======
 import Testimonials from './components/testimonials';
->>>>>>> 56e55dadbe8fa564f2f5d6549fa85b31b5b4618c
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
