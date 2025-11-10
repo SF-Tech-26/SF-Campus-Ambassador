@@ -22,7 +22,6 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
 
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -46,7 +45,7 @@ export default function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/testimonials" element={<Testimonials />}/>
+          <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </Router>
