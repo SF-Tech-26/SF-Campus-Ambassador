@@ -1,8 +1,8 @@
 // client/src/pages/AboutPage.jsx
 import React, { useRef, useEffect } from "react";
 import Navbar from "../components/Navbar"; // adjust path if your Navbar path differs
-import "../pages/AboutPage.css";
-import bg from "../assets/about-bg.png";
+import "../pages/AboutUs.css";
+import bg from "../assets/aboutus-bg.png";
 
 // format number with commas
 function formatNumber(value) {

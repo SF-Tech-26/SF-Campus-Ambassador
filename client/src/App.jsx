@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import FAQ from "./pages/FAQ";
+// import Testimonials from './components/testimonials2'
 
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
@@ -12,6 +13,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Testimonials from './components/testimonials';
+import AboutPage from "./pages/AboutUs";
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
@@ -80,6 +82,7 @@ export default function App() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />}/>
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </Router>
     </AuthProvider>
