@@ -20,14 +20,14 @@ const Navbar = () => {
     const navigate = useNavigate();
     // Navigation links data
     const navLinks = [
-        { name: 'HOME', href: '/', active: true },
-        { name: 'ABOUT US', href: '/about' },
-        { name: 'CA PROGRAM', href: '/caprogram' },
-        { name: 'PERKS', href: '/perks' },
+        { name: 'HOME', href: '#home', active: true },
+        { name: 'ABOUT US', href: '#aboutus' },
+        { name: 'CA PROGRAM', href: '#caprogram' },
+        { name: 'PERKS', href: '#perks' },
         { name: 'RESPONSIBILITY', href: '#responsibility' },
-        { name: 'TESTIMONIALS', href: '/testimonials' },
-        { name: 'TEAM', href: '#team' },
-        { name: 'FAQ', href: '/faq' },
+        { name: 'TESTIMONIALS', href: '#testimonials' },
+        { name: 'TEAM', href: '#ourteam' },
+        { name: 'FAQ', href: '#faq' },
     ];
 
     return (
