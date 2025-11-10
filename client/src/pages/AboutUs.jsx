@@ -54,7 +54,7 @@ export default function AboutPage() {
   const refFootfalls = useCountUpOnVisible(footfalls, 1400);
 
   return (
-    <div className="about-root" style={{ backgroundImage: `url(${bg})` }}>
+    <div id="aboutus" className="about-root" style={{ backgroundImage: `url(${bg})` }}>
       <Navbar />
       <div className="about-content container">
         <div className="about-left">
