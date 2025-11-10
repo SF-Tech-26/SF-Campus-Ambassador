@@ -31,7 +31,7 @@ const HomePage = () => {
   }, []);
   return (
 
-    <div id="home " className="overflow-x-hidden">
+    <div id="home" className="overflow-x-hidden">
       <Navbar />
 
       {/* Main Section */}
