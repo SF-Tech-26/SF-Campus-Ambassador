@@ -14,6 +14,7 @@ import SignUpPage from "./pages/SignUpPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Testimonials from './components/testimonials';
 import AboutPage from "./pages/AboutUs";
+import { LandingPage } from "./pages/LandingPage";
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
@@ -60,7 +61,7 @@ export default function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LandingPage />} />
           <Route
             path="/dashboard"
             element={
