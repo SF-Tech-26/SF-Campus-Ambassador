@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro&family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-jaro: "Jaro", sans-serif;
+}
+
+
+
+/* Custom class for the Jaro font */
+.font-jaro {
+  font-family: 'Jaro', sans-serif;
+}
+
+  
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* prevents white edge flash */
+}
+
+html {
+  scroll-behavior: smooth;
+}
