@@ -1,8 +1,8 @@
 // client/src/pages/AboutPage.jsx
 import React, { useRef, useEffect } from "react";
 import Navbar from "../components/Navbar"; // adjust path if your Navbar path differs
-import "../pages/AboutPage.css";
-import bg from "../assets/about-bg.png";
+import "../pages/AboutUs.css";
+import bg from "../assets/aboutus-bg.png";
 
 // format number with commas
 function formatNumber(value) {
@@ -54,7 +54,7 @@ export default function AboutPage() {
   const refFootfalls = useCountUpOnVisible(footfalls, 1400);
 
   return (
-    <div className="about-root" style={{ backgroundImage: `url(${bg})` }}>
+    <div id="aboutus" className="about-root" style={{ backgroundImage: `url(${bg})` }}>
       <Navbar />
       <div className="about-content container">
         <div className="about-left">

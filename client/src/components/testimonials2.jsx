@@ -79,7 +79,7 @@ function Testimonials(){
     return(
         <>
         <div className="bg-gradient-to-br from-#1b1c1c via-#322f38 to-indigo-950 flex flex-col h-full w-full justify-center items-center py-16 px-4">
-            <h1 className="text-5xl md:text-6xl text-white font-serif text-center font-bold mb-16">Testimonials</h1>
+            <h1 className="text-5xl md:text-6xl text-white font-medium text-center font-bold mb-16">Testimonials</h1>
             {/* making sections using grids a single column for smaller screens while two coloums for bigger screens*/}
             <div className="w-full max-w-7xl mx-auto items-center grid grid-cols-1 grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 gap-12">
 

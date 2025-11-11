@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jaro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaro&family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -6,28 +6,19 @@
 }
 
 
+
+/* Custom class for the Jaro font */
+.font-jaro {
+  font-family: 'Jaro', sans-serif;
+}
+
+  
 body {
-  @apply bg-black text-white;
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* prevents white edge flash */
 }
 
-/* ✨ Glass morphism */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-}
-
-/* 🌌 Particle animation */
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: float 6s infinite ease-in-out;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); opacity: 0.8; }
-  50% { transform: translateY(-40px); opacity: 1; }
-  100% { transform: translateY(0px); opacity: 0.8; }
+html {
+  scroll-behavior: smooth;
 }
