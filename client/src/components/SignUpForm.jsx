@@ -3,7 +3,10 @@ import { useState, useContext } from "react";
 import { registerCA } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+<<<<<<< HEAD
 import festBg from "../assets/FB_IMG_1675170342527.jpg";
+=======
+>>>>>>> 46952e0 (puskar)
 
 const SignUpForm = () => {
   const { login } = useContext(AuthContext);
@@ -55,6 +58,7 @@ const SignUpForm = () => {
   };
 
   return (
+<<<<<<< HEAD
 <div className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
   {/* Full background image (same as Sign In) with safe fallback */}
   <div
@@ -183,6 +187,43 @@ const SignUpForm = () => {
 </div>
 
 
+=======
+  <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-purple-700 to-blue-600">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white/20 backdrop-blur-md p-8 rounded-2xl shadow-lg w-full max-w-md text-white"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center">Sign Up</h2>
+        {error && <p className="text-red-400 mb-2">{error}</p>}
+
+        {/* Form fields */}
+        {Object.keys(form).map((key) => (
+          <input
+            key={key}
+            type={
+              key.includes("password")
+                ? "password"
+                : key === "dob"
+                ? "date"
+                : "text"
+            }
+            name={key}
+            placeholder={key.replace(/_/g, " ").toUpperCase()}
+            value={form[key]}
+            onChange={handleChange}
+            className="w-full mb-3 p-2 rounded bg-white/30 placeholder-white"
+            required={!["addr", "security_question", "security_answer"].includes(
+              key
+            )}
+          />
+        ))}
+
+  <button className="w-full py-2 mt-2 bg-linear-to-r from-purple-500 to-blue-500 rounded-lg hover:scale-105 transition-transform">
+          Register
+        </button>
+      </form>
+    </div>
+>>>>>>> 46952e0 (puskar)
   );
 };
 

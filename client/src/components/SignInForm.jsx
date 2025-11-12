@@ -3,8 +3,11 @@ import { useState, useContext } from "react";
 import { loginCA } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+<<<<<<< HEAD
 import festBg from "../assets/FB_IMG_1675170342527.jpg";
 
+=======
+>>>>>>> 46952e0 (puskar)
 
 const SignInForm = () => {
   const { login } = useContext(AuthContext);
@@ -47,6 +50,7 @@ const SignInForm = () => {
   };
 
   return (
+<<<<<<< HEAD
 <div className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
   {/* full-bleed background image with subtle color overlay */}
   <div
@@ -166,6 +170,38 @@ const SignInForm = () => {
   </form>
 </div>
 
+=======
+  <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-purple-700 to-blue-600">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white/20 backdrop-blur-md p-8 rounded-2xl shadow-lg w-full max-w-md text-white"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center">Sign In</h2>
+        {error && <p className="text-red-400 mb-2">{error}</p>}
+
+        {["email", "password"].map((key) => (
+          <input
+            key={key}
+            type={key === "password" ? "password" : "text"}
+            name={key}
+            placeholder={key}
+            value={form[key]}
+            onChange={handleChange}
+            className="w-full mb-3 p-2 rounded bg-white/30 placeholder-white"
+            required
+          />
+        ))}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full py-2 mt-2 bg-linear-to-r from-purple-500 to-blue-500 rounded-lg hover:scale-105 transition-transform disabled:opacity-50"
+        >
+          {loading ? "Signing in..." : "Sign In"}
+        </button>
+      </form>
+    </div>
+>>>>>>> 46952e0 (puskar)
   );
 };
 

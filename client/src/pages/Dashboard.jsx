@@ -3,13 +3,42 @@ import ParticleBackground from "../components/ParticleBackground";
 import GlassCard from "../components/GlassCard";
 import { AuthContext } from "../context/AuthContext";
 import { fetchSubmittedData } from "../api/data";
+<<<<<<< HEAD
 import { useNavigate, Link } from "react-router-dom";
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
+=======
+import { useNavigate } from "react-router-dom";
+
+const Dashboard = () => {
+>>>>>>> 46952e0 (puskar)
   const navigate = useNavigate();
+  const { token } = useContext(AuthContext);
+  const [submittedData, setSubmittedData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Fetch dashboard data
+  useEffect(() => {
+    const getData = async () => {
+      if (!token) return;
+      try {
+        setLoading(true);
+        const data = await fetchSubmittedData(token);
+        setSubmittedData(data);
+        setError(null);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch dashboard data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, [token]);
 
+<<<<<<< HEAD
   return (
     <nav className="absolute top-0 w-full flex justify-between p-4 text-white z-20 font-semibold">
       <Link to="/" className="hover:text-cyan-400 transition">
@@ -65,6 +94,8 @@ const Dashboard = () => {
     getData();
   }, [token]);
 
+=======
+>>>>>>> 46952e0 (puskar)
   const tasks = [
     { name: "Get participant to SF", pts: 30, ptsGained: 0 },
     { name: "Suggest Idea", pts: 5, ptsGained: 0 },
@@ -90,12 +121,30 @@ const Dashboard = () => {
     );
   }
 
+  // Show loading and error states
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white text-lg">
+        Loading dashboard...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-400 text-lg">
+        {error}
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />
       {/* Main container: Removed mystical background gradient */}
       <div className="relative min-h-screen overflow-hidden">
 
+<<<<<<< HEAD
         {/* Removed mystical-fog and magic-particle divs */}
 
         <div className="relative z-10 py-20 md:py-24 px-4 sm:px-6 md:px-8">
@@ -217,6 +266,83 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+=======
+        {/* Top Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-10">
+          <button onClick={() => navigate("/viewprofile")}>
+            <GlassCard>
+              <p className="text-center text-base sm:text-lg font-semibold">
+                View Profile
+              </p>
+            </GlassCard>
+          </button>
+          <GlassCard>
+            <p className="text-center text-base sm:text-lg font-semibold">
+              #1 Your Standings
+            </p>
+          </GlassCard>
+          <GlassCard>
+            <p className="text-center text-base sm:text-lg font-semibold">
+              Guidelines
+            </p>
+          </GlassCard>
+          <GlassCard>
+            <p className="text-center text-base sm:text-lg font-semibold">
+              Leaderboard
+            </p>
+          </GlassCard>
+        </div>
+
+        {/* Tasks Table */}
+        <div className="glass p-4 sm:p-6 overflow-x-auto rounded-xl">
+          <table className="min-w-full text-left text-sm sm:text-base">
+            <thead>
+              <tr className="text-gray-300 border-b border-white/20">
+                <th className="py-2">Task</th>
+                <th>Action</th>
+                <th>Points</th>
+                <th>Progress</th>
+                <th>Difficulty</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.map((t, i) => (
+                <tr
+                  key={i}
+                  className="border-b border-white/10 hover:bg-white/10 transition"
+                >
+                  <td className="py-3">{t.name}</td>
+                  <td>
+                    <button
+                      onClick={() => navigate("/form")}
+                      className="bg-cyan-500 hover:bg-cyan-600 px-3 sm:px-4 py-1 rounded text-xs sm:text-sm"
+                    >
+                      Click Here
+                    </button>
+                  </td>
+                  <td>{t.pts}</td>
+
+                  {/* Show dynamic progress if available */}
+                  <td>{submittedData?.progress?.[t.name] || "0%"}</td>
+
+                  <td>
+                    <span
+                      className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm ${diffColors[t.diff]}`}
+                    >
+                      {t.diff}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Overall Progress */}
+          <p className="mt-4 text-xs sm:text-sm text-gray-300 text-center">
+            Overall Progress:{" "}
+            {submittedData?.completedTasks?.length || 0}/{tasks.length} Complete
+          </p>
+>>>>>>> 46952e0 (puskar)
         </div>
       </div>
     </>
