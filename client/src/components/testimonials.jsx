@@ -158,20 +158,20 @@ function Testimonials() {
                     {/*navigation button */}
                     <button
                         onClick={prevSlide}
-                        className="absolute left-0 opacity-0 sm:opacity-100 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
+                        className="absolute left-0 top-4/12 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
                         aria-label="Previous testimonial"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
 
                     <button
                         onClick={nextSlide}
-                        className="absolute right-0 opacity-0 sm:opacity-100 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
+                        className="absolute right-0 top-4/12 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
                         aria-label="Next testimonial"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                     </button>

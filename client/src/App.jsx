@@ -1,9 +1,7 @@
-// App.jsx
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import FAQ from "./pages/FAQ";
-// import Testimonials from './components/testimonials2'
 
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
@@ -17,13 +15,10 @@ import AboutPage from "./pages/AboutUs";
 import { LandingPage } from "./pages/LandingPage";
 import Responsibility from "./pages/Responsibility";
 
-
-
 export default function App() {
   return (
     <AuthProvider>
       <Router>
-
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
