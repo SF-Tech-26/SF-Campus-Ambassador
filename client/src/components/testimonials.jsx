@@ -114,19 +114,19 @@ function Testimonials() {
                                 let baseStyle = "absolute h-150 w-90 sm:h-120 sm:w-130 bg-black/10 backdrop-blur-md rounded-2xl p-8 transition all duration-500 ease-in-out border border-white/20"
                                 //index depended styling---------------
                                 if (position == 0) {
-                                    return (`${baseStyle} opacity-100 translate-x-0 scale:60 ms:scale-100 z-30`);
+                                    return (`${baseStyle} opacity-100 translate-x-0 scale:60 sm:scale-100 z-30`);
                                 }
                                 else if (position == 1) {
-                                    return (`${baseStyle} opacity-0 translate-x-80 scale:50 ms:scale-90 z-20 md:opacity-60`);
+                                    return (`${baseStyle} opacity-0 translate-x-80 scale:50 sm:scale-85 z-20 md:opacity-60`);
                                 }
                                 else if (position == 2) {
-                                    return (`${baseStyle} opacity-0 translate-x-96 scale: 45 ms:scale-75 z-10 md:opacity-30`);
+                                    return (`${baseStyle} opacity-0 translate-x-96 scale: 45 sm:scale-75 z-10 md:opacity-30`);
                                 }
                                 else if (position == -1) {
-                                    return (`${baseStyle} opacity-0 -translate-x-80 scale:50 ms:scale-90 z-20 md:opacity-60`);
+                                    return (`${baseStyle} opacity-0 -translate-x-80 scale:50 sm:scale-85 z-20 md:opacity-60`);
                                 }
                                 else if (position == -2) {
-                                    return (`${baseStyle} opacity-0 -translate-x-96 scale:45 ms:scale-75 z-10 md:opacity-30`);
+                                    return (`${baseStyle} opacity-0 -translate-x-96 scale:45 sm:scale-75 z-10 md:opacity-30`);
                                 }
                                 else {
                                     return (`${baseStyle} opacity-0 scale-75 z-0 `);
