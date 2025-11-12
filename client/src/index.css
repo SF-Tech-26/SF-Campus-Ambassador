@@ -3,6 +3,7 @@
 
 @theme {
   --font-jaro: "Jaro", sans-serif;
+  --breakpoint-xl2: 1220px;
 }
 
 
