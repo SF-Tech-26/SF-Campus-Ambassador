@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * HamburgerIcon component for the mobile menu toggle.
@@ -16,66 +17,148 @@ const HamburgerIcon = () => (
 const Navbar = () => {
     // State to manage the mobile menu's open/closed status
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const navigate = useNavigate();
     // Navigation links data
     const navLinks = [
-        { name: 'HOME', href: '#', active: true },
-        { name: 'ABOUT US', href: '#' },
-        { name: 'CA PROGRAM', href: '#' },
-        { name: 'PERKS', href: '#' },
-        { name: 'RESPONSIBILITY', href: '#' },
-        { name: 'TESTIMONIALS', href: '#' },
-        { name: 'TEAM', href: '#' },
-        { name: 'FAQ', href: '#' },
+        { name: 'HOME', href: '#home', active: true },
+        { name: 'ABOUT US', href: '#aboutus' },
+        { name: 'CA PROGRAM', href: '#caprogram' },
+        { name: 'PERKS', href: '#perks' },
+        { name: 'RESPONSIBILITY', href: '#responsibility' },
+        { name: 'TESTIMONIALS', href: '#testimonials' },
+        { name: 'TEAM', href: '#ourteam' },
+        { name: 'FAQ', href: '#faq' },
     ];
 
     return (
-        <nav className="bg-black text-white py-4 px-4 sm:px-8 border-b border-gray-700 font-jaro">
-            <div className="container mx-auto flex flex-wrap justify-between items-center">
-                
-
-                {/* Mobile Menu Button (Hamburger) */}
-                <button
-                    id="menu-toggle"
-                    className="md:hidden p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600"
-                    aria-label="Toggle menu"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)} // Toggle state on click
-                >
-                    <HamburgerIcon />
-                </button>
-
-                {/* Navigation Links
-                  - The 'hidden' class is applied conditionally based on 'isMenuOpen' state.
-                */}
-                <div 
-                    id="menu" 
-                    className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6 w-full md:w-auto mt-4 md:mt-0`}
-                >
-                    
-                    {/* Main Nav Links - Mapped from array */}
-                    <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6 text-sm font-medium text-gray-300">
+        <nav className="font-jaro fixed top-0 left-0 right-0 z-50">
+            {/* Horizontal navbar for xl2 screens (1220px) and up */}
+            <div className="hidden xl2:block bg-black text-white py-4 border-b border-gray-700 animate-slideDown"  >
+                <div className="w-full flex items-center justify-between px-8">
+                    <div className="flex items-center space-x-8 text-xl text-gray-300">
                         {navLinks.map((link) => (
-                            <a 
-                                key={link.name} 
-                                href={link.href} 
-                                // Apply active classes conditionally
-                                className={`nav-link-hover hover:text-white px-2 py-1 ${link.active ? 'nav-link-active text-white' : ''}`}
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className={`nav-link-hover hover:text-[#E83030] px-3 py-2 ${link.active ? 'nav-link-active text-[#E83030]' : ''
+                                    }`}
+                                style={{
+                                    fontWeight: 500,
+                                    animation: 'slideDown 0.5s ease-out forwards',
+                                    animationDelay: '200ms',
+                                    opacity: 0,
+                                    transform: 'translateY(-20px)'
+                                }}
                             >
                                 {link.name}
                             </a>
                         ))}
                     </div>
+                    {/* Desktop Login on the right */}
+                    <div className="flex-shrink-0">
+                        <button
 
-                    {/* Spacer */}
-                    <div className="flex-grow hidden lg:block"></div>
-
-                    {/* Login/SignUp Link */}
-                    <div className="mt-4 md:mt-0 md:ml-6">
-                        <a href="#" className="inline-block text-sm font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-gray-200 transition-colors">
+                            className="inline-block text-m font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors cursor-pointer"
+                            style={{
+                                animation: 'slideDown 0.5s ease-out forwards',
+                                animationDelay: `${navLinks.length * 100}ms`,
+                                opacity: 0,
+                                transform: 'translateY(-20px)'
+                            }}
+                            onClick={() => {
+                                navigate("/signin")
+                            }}
+                        >
                             Login / SignUp
-                        </a>
+                        </button>
                     </div>
                 </div>
+            </div>
+
+            <style>
+                {`
+                @keyframes slideDown {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                `}
+            </style>
+
+            {/* Mobile/Tablet sidebar content (below 1220px breakpoint) */}
+            <div className="xl2:hidden">
+                {/* Hamburger button */}
+                <button
+                    id="menu-toggle"
+                    className={`fixed top-4 left-4 z-50 p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 bg-black text-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'
+                        }`}
+                    aria-label="Toggle menu"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    <HamburgerIcon />
+                </button>
+
+                {/* Login button for mobile - top right corner */}
+                <button
+                    className="fixed top-4 right-4 10 text-xs sm:text-sm font-medium bg-white text-black px-3 py-2 sm:px-4 sm:py-2 cursor-pointer rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors"
+                    onClick={() => {
+                        navigate("/signin")
+                    }}
+                >
+                    Login / SignUp
+                </button>
+
+
+                {/* Sidebar container */}
+                <div
+                    className={`${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+                        } fixed top-0 left-0 h-full w-[220px] bg-black/40 backdrop-blur-md text-white transition-transform duration-300 ease-in-out z-40 shadow-lg pointer-events-auto`}
+                    style={{
+                        borderRight: '1px solid rgba(255, 255, 255, 0.1)', // optional subtle edge line
+                    }}
+                >
+                    {/* Sidebar content */}
+                    <div className="flex flex-col h-full py-8 px-5">
+                        {/* Navigation Links */}
+                        <div className="flex flex-col space-y-3 text-lg text-gray-300">
+                            {navLinks.map((link, index) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`hover:text-[#E83030] px-2 py-2 rounded-md transition-all
+            ${isMenuOpen
+                                            ? 'translate-x-0 opacity-100'
+                                            : '-translate-x-8 opacity-0'
+                                        } 
+            ${link.active ? 'text-[#E83030] bg-white/10' : ''}`}
+                                    style={{
+                                        fontWeight: 500,
+                                        transition: 'opacity 300ms, transform 300ms',
+                                        transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms',
+                                    }}
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+
+
+                {/* Overlay for mobile - closes sidebar when clicking outside */}
+                {isMenuOpen && (
+                    <div
+                        className="fixed inset-0 bg-black/30 backdrop-blur-[2px] z-30 transition-opacity duration-300"
+                        onClick={() => setIsMenuOpen(false)}
+                    ></div>
+                )}
+
             </div>
         </nav>
     );
