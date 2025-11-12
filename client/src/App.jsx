@@ -15,6 +15,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Testimonials from './components/testimonials';
 import AboutPage from "./pages/AboutUs";
 import { LandingPage } from "./pages/LandingPage";
+import Responsibility from "./pages/Responsibility";
 
 
 
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/viewprofile" element={<ViewProfile />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="/responsibility" element={<Responsibility />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/about" element={<AboutPage />} />
