@@ -32,13 +32,8 @@ const Navbar = () => {
 
     return (
         <nav className="font-jaro fixed top-0 left-0 right-0 z-50">
-<<<<<<< HEAD
-            {/* Horizontal navbar for lg screens and up */}
-            <div className="hidden lg:block bg-black text-white py-4 border-b border-gray-700 animate-slideDown"  >
-=======
             {/* Horizontal navbar for xl2 screens (1220px) and up */}
             <div className="hidden xl2:block bg-black text-white py-4 border-b border-gray-700 animate-slideDown"  >
->>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
                 <div className="w-full flex items-center justify-between px-8">
                     <div className="flex items-center space-x-8 text-xl text-gray-300">
                         {navLinks.map((link) => (
@@ -62,12 +57,7 @@ const Navbar = () => {
                     {/* Desktop Login on the right */}
                     <div className="flex-shrink-0">
                         <button
-
-<<<<<<< HEAD
-                            className="inline-block text-m font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors cur"
-=======
                             className="inline-block text-m font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors cursor-pointer"
->>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
                             style={{
                                 animation: 'slideDown 0.5s ease-out forwards',
                                 animationDelay: `${navLinks.length * 100}ms`,
@@ -98,14 +88,8 @@ const Navbar = () => {
                 }
                 `}
             </style>
-
-<<<<<<< HEAD
-            {/* Mobile/Tablet sidebar content (below lg breakpoint) */}
-            <div className="lg:hidden">
-=======
             {/* Mobile/Tablet sidebar content (below 1220px breakpoint) */}
             <div className="xl2:hidden">
->>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
                 {/* Hamburger button */}
                 <button
                     id="menu-toggle"
