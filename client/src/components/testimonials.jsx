@@ -59,7 +59,11 @@ function Testimonials() {
         if (animate) {
             const interval = setInterval(() => {
                 nextSlide();
+<<<<<<< HEAD
+            }, 3000);
+=======
             }, 2000);
+>>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
             return () => clearInterval(interval);
         }
 
@@ -89,12 +93,20 @@ function Testimonials() {
     return (
         <div id="testimonials">
             {/*Main Container */}
+<<<<<<< HEAD
+            <div className="bg-gradient-to-br from-#1b1c1c via-#322f38 to-indigo-950 flex flex-col h-full w-full justify-center items-center py-16 px-4">
+=======
             <div className="bg-gradient-to-b from-black to-gray-900 flex flex-col h-full w-full justify-center items-center py-16 px-4">
+>>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
                 <h1 className="text-5xl md:text-6xl font-bold text-center mb-16 text-white">Testimonials</h1>
                 {/*main content */}
                 <div className="relative w-full max-w-6xl h-130 flex items-center justify-center">
                     {/*slider */}
+<<<<<<< HEAD
+                    <div className="relative h-full w-full overflow-y-visible overflow-x-hidden flex items-center justify-center">
+=======
                     <div className="relative h-full w-full overflow-y-hidden overflow-x-hidden flex items-center justify-center">
+>>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
                         {/*loading cards */}
                         {cards.map((card, index) => {
                             // card specific functions-----------------------------------------------------------------------------
@@ -158,20 +170,34 @@ function Testimonials() {
                     {/*navigation button */}
                     <button
                         onClick={prevSlide}
+<<<<<<< HEAD
+                        className="absolute left-0 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
+                        aria-label="Previous testimonial"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+=======
                         className="absolute left-0 top-4/12 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
                         aria-label="Previous testimonial"
                     >
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+>>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
 
                     <button
                         onClick={nextSlide}
+<<<<<<< HEAD
+                        className="absolute right-0 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
+                        aria-label="Next testimonial"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+=======
                         className="absolute right-0 top-4/12 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
                         aria-label="Next testimonial"
                     >
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+>>>>>>> 27beed2bca4faab9d4a8c24b8955f2b694df18b8
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
