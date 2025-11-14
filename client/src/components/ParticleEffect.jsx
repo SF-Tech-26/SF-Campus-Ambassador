@@ -5,11 +5,13 @@ class Particle {
     this.x = x;
     this.y = y;
     this.hue = hue;
-    this.size = Math.random() * 3 + 1;
-    this.speedX = Math.random() * 3 - 1.5;
-    this.speedY = Math.random() * 3 - 1.5;
-    this.color = `hsla(${hue}, 100%, 70%, 0.8)`;
-    this.life = 100;
+    // subtle, small particles
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.6;
+    this.speedY = (Math.random() - 0.5) * 0.6;
+    // use a very faint white if no hue provided to avoid bright colors
+    this.color = typeof hue === 'number' ? `hsla(${hue}, 60%, 70%, 0.06)` : 'rgba(255,255,255,0.03)';
+    this.life = 220 + Math.random() * 80;
   }
 
   update() {
@@ -45,23 +47,17 @@ export default function ParticleEffect() {
     }
     mousePositionRef.current.x = clientX;
     mousePositionRef.current.y = clientY;
-    
-    for (let i = 0; i < 5; i++) {
-      if (mousePositionRef.current.x && mousePositionRef.current.y) {
-        particlesRef.current.push(
-          new Particle(mousePositionRef.current.x, mousePositionRef.current.y, hueRef.current)
-        );
-      }
-    }
-    hueRef.current = (hueRef.current + 3) % 360;
+    // Intentionally do NOT spawn particles on pointer move to avoid bright/glowing trails.
+    // We still track mouse position in case future effects need it.
   }, []);
 
   const animate = React.useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
-    ctx.fillStyle = 'rgba(10, 10, 20, 0.1)';
+  // subtle fade to create trailing effect without bright glow
+  // use a lighter fade so faint particles remain visible longer after reload
+  ctx.fillStyle = 'rgba(5, 6, 10, 0.06)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let i = particlesRef.current.length - 1; i >= 0; i--) {
@@ -73,7 +69,14 @@ export default function ParticleEffect() {
         particle.draw(ctx);
       }
     }
-    
+    // Occasionally spawn very faint, slow-moving particles at random positions
+    // slightly higher chance so ambient particles don't disappear for many seconds
+    if (Math.random() < 0.035) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      particlesRef.current.push(new Particle(x, y));
+    }
+
     animationFrameId.current = requestAnimationFrame(animate);
   }, []);
 
@@ -86,6 +89,14 @@ export default function ParticleEffect() {
     };
     
     handleResize();
+
+    // Seed with a modest number of faint particles so the background isn't empty on first render
+    for (let i = 0; i < 30; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      particlesRef.current.push(new Particle(x, y));
+    }
+
     animationFrameId.current = requestAnimationFrame(animate);
 
     window.addEventListener('mousemove', handlePointerMove);
@@ -101,10 +112,11 @@ export default function ParticleEffect() {
   }, [animate, handlePointerMove]);
 
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none" style={{ zIndex: 9999 }}>
+    // place canvas behind content so it doesn't visually block or darken the page
+    <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none" style={{ zIndex: 0 }}>
       <canvas 
         ref={canvasRef} 
-        className="absolute top-0 left-0 w-full h-full pointer-events-auto"
+        className="absolute top-0 left-0 w-full h-full pointer-events-none"
       />
     </div>
   );
