@@ -138,7 +138,7 @@ function Testimonials() {
                                 <div key={card.id} className={getCardStyle()} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                                     <div className="flex flex-col h-full justify-between text-white">
                                         <div>
-                                            <div className="h-35 w-35 sm:h-50 sm:w-50 bg-amber-100 translate-x-20 sm:translate-x-35 border-white/20 rounded-full translate-y-5 sm:-translate-y-13">
+                                            <div className="h-35 w-35 sm:h-50 sm:w-50 translate-x-20 sm:translate-x-35 border-none rounded-full translate-y-5 sm:-translate-y-13">
                                                 <img src={card.image}
                                                     alt={card.author}
                                                     className="h-full w-full object-cover rounded-full" />
