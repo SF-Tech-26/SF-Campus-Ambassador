@@ -89,7 +89,7 @@ function Testimonials() {
     return (
         <div id="testimonials">
             {/*Main Container */}
-            <div className="bg-gradient-to-br from-#1b1c1c via-#322f38 to-indigo-950 flex flex-col h-full w-full justify-center items-center py-16 px-4">
+            <div className="bg-gradient-to-b from-black to-gray-900  flex flex-col h-full w-full justify-center items-center py-16 px-4">
                 <h1 className="text-5xl md:text-6xl font-bold text-center mb-16 text-white">Testimonials</h1>
                 {/*main content */}
                 <div className="relative w-full max-w-6xl h-130 flex items-center justify-center">
@@ -143,11 +143,11 @@ function Testimonials() {
                                                     alt={card.author}
                                                     className="h-full w-full object-cover rounded-full" />
                                             </div>
-                                            <h1 className="pt-15 sm:pt-0 text-2xl font-bold mb-4 text-purple-300">{card.title}</h1>
-                                            <p className="text-base leading-relaxed mb-6 text-gray-200">{card.description}</p>
+                                            <h1 className="pt-15 sm:pt-0 text-2xl font-bold mb-4 text-purple-300 relative">{card.title}</h1>
+                                            <p className="font-sans leading-relaxed mb-0 text-gray-200 absolute top-6/12 w-10/12">{card.description}</p>
                                         </div>
                                         <div className="border-t border-white/20 pt-4">
-                                            <p className="font-semibold text-lg">{card.author}</p>
+                                            <p className="font-semibold font-sans text-lg">{card.author}</p>
                                             <p className="text-sm text-purple-300">{card.role}</p>
                                         </div>
                                     </div>
