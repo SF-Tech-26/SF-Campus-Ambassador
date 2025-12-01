@@ -1,9 +1,7 @@
 import React from "react";
 import "./style.css"; 
-import "font-awesome/css/font-awesome.min.css"; 
+// import "font-awesome/css/font-awesome.min.css"; 
 import Navbar from "../components/Navbar";
-
-
 import member1 from "../components/images/member1.jpg";
 import member2 from "../components/images/member2.jpg";
 import member3 from "../components/images/member3.jpg";
@@ -21,9 +19,9 @@ const OurTeam = () => {
           <h2 className="name">Rohit Saaho</h2>
           <p className="member-role">Publicity and Media Outreach</p>
           <div className="social-icons">
-            <a href="https://www.facebook.com/rani.suresh.165033" target="_blank" rel="noreferrer" className="facebook">
+            <Link href="https://www.facebook.com/rani.suresh.165033" target="_blank" rel="noreferrer" className="facebook">
               <i className="fa fa-facebook-square" style={{ fontSize: "30px" }}></i>
-            </a>
+            </Link>
             <a href="https://www.instagram.com/rohitt__xy/" target="_blank" rel="noreferrer" className="instagram">
               <i className="fa fa-instagram" style={{ fontSize: "30px" }}></i>
             </a>
