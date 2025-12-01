@@ -13,7 +13,7 @@ import Testimonials from './components/testimonials';
 import AboutPage from "./pages/AboutUs";
 import { LandingPage } from "./pages/LandingPage";
 import Responsibility from "./pages/Responsibility";
-// import OurTeam from "./pages/OurTeam";
+import OurTeam from "./pages/OurTeam";
 
 export default function App() {
   return (
@@ -44,7 +44,7 @@ export default function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/about" element={<AboutPage />} />
-          {/* <Route path="/ourteam" element={<OurTeam />} /> */}
+          <Route path="/ourteam" element={<OurTeam />} />
         </Routes>
       </Router>
     </AuthProvider>
