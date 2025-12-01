@@ -4,6 +4,7 @@ import "font-awesome/css/font-awesome.min.css";
 import Navbar from "../components/Navbar";
 
 
+
 import member1 from "../components/images/member1.jpg";
 import member2 from "../components/images/member2.jpg";
 import member3 from "../components/images/member3.jpg";
