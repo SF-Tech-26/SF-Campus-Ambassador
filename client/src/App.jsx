@@ -44,6 +44,8 @@ export default function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/ourteam" element={<OurTeam />} />
+          
         </Routes>
       </Router>
     </AuthProvider>
