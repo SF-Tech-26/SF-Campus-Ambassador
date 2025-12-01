@@ -19,9 +19,9 @@ const OurTeam = () => {
           <h2 className="name">Rohit Saaho</h2>
           <p className="member-role">Publicity and Media Outreach</p>
           <div className="social-icons">
-            <Link href="https://www.facebook.com/rani.suresh.165033" target="_blank" rel="noreferrer" className="facebook">
+            <a href="https://www.facebook.com/rani.suresh.165033" target="_blank" rel="noreferrer" className="facebook">
               <i className="fa fa-facebook-square" style={{ fontSize: "30px" }}></i>
-            </Link>
+            </a>
             <a href="https://www.instagram.com/rohitt__xy/" target="_blank" rel="noreferrer" className="instagram">
               <i className="fa fa-instagram" style={{ fontSize: "30px" }}></i>
             </a>
