@@ -72,6 +72,7 @@ const SignUpForm = () => {
       filter: "contrast(0.95) saturate(0.95)",
       backgroundRepeat: "no-repeat",
       backgroundColor: "#061018",
+      backgroundAttachment: "fixed", // <-- keep background visually fixed
     }}
   />
 
@@ -102,7 +103,8 @@ const SignUpForm = () => {
 
   <form
     onSubmit={handleSubmit}
-    className="relative z-10 w-full max-w-lg p-8 rounded-3xl bg-white/6 backdrop-blur-md border border-white/8 shadow-2xl text-white overflow-hidden"
+    className="relative z-10 w-full max-w-lg p-8 rounded-3xl bg-white/6 backdrop-blur-md border border-white/8 shadow-2xl text-white overflow-hidden
+               max-h-[80vh] overflow-y-auto" 
     aria-label="Sign up form"
   >
     {/* Decorative top glow */}
@@ -181,6 +183,7 @@ const SignUpForm = () => {
     `}</style>
   </form>
 </div>
+
 
 
   );
