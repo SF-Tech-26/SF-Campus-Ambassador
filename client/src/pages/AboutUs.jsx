@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './AboutUs.css'; 
 
-import aboutUsBackground from './about-us-copy.png'; 
+import aboutUsBackground from '../assets/about-us-copy.png'; 
 
 // --- Helper Functions (Refactored from your old script) ---
 
