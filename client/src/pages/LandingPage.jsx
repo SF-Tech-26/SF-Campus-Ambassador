@@ -5,6 +5,7 @@ import Testimonials from '../components/testimonials'
 import FAQ from './FAQ'
 import Responsibility from './Responsibility'
 import Perks from './Perks'
+import Team from './OurTeam'
 
 export const LandingPage = () => {
   return (
@@ -15,6 +16,7 @@ export const LandingPage = () => {
     <Perks />
     <Testimonials/>
     <FAQ />
+    <Team />
     </>
   )
 }
