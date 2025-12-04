@@ -119,7 +119,7 @@ const SignUpForm = () => {
     </div>
 
     {/* Form fields (logic preserved) */}
-    <div className="grid grid-cols-1 gap-4">
+    <div className="flex flex-col">
       {Object.keys(form).map((key) => (
         <input
           key={key}

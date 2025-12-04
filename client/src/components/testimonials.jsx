@@ -59,7 +59,7 @@ function Testimonials() {
         if (animate) {
             const interval = setInterval(() => {
                 nextSlide();
-            }, 3000);
+            }, 2000);
             return () => clearInterval(interval);
         }
 
@@ -89,12 +89,12 @@ function Testimonials() {
     return (
         <div id="testimonials">
             {/*Main Container */}
-            <div className="bg-gradient-to-br from-#1b1c1c via-#322f38 to-indigo-950 flex flex-col h-full w-full justify-center items-center py-16 px-4">
+            <div className="bg-gradient-to-b from-black to-gray-900 flex flex-col h-full w-full justify-center items-center py-16 px-4">
                 <h1 className="text-5xl md:text-6xl font-bold text-center mb-16 text-white">Testimonials</h1>
                 {/*main content */}
                 <div className="relative w-full max-w-6xl h-130 flex items-center justify-center">
                     {/*slider */}
-                    <div className="relative h-full w-full overflow-y-visible overflow-x-hidden flex items-center justify-center">
+                    <div className="relative h-full w-full overflow-y-hidden overflow-x-hidden flex items-center justify-center">
                         {/*loading cards */}
                         {cards.map((card, index) => {
                             // card specific functions-----------------------------------------------------------------------------
@@ -114,19 +114,19 @@ function Testimonials() {
                                 let baseStyle = "absolute h-150 w-90 sm:h-120 sm:w-130 bg-black/10 backdrop-blur-md rounded-2xl p-8 transition all duration-500 ease-in-out border border-white/20"
                                 //index depended styling---------------
                                 if (position == 0) {
-                                    return (`${baseStyle} opacity-100 translate-x-0 scale:60 ms:scale-100 z-30`);
+                                    return (`${baseStyle} opacity-100 translate-x-0 scale:60 sm:scale-100 z-30`);
                                 }
                                 else if (position == 1) {
-                                    return (`${baseStyle} opacity-0 translate-x-80 scale:50 ms:scale-90 z-20 md:opacity-60`);
+                                    return (`${baseStyle} opacity-0 translate-x-80 scale:50 sm:scale-85 z-20 md:opacity-60`);
                                 }
                                 else if (position == 2) {
-                                    return (`${baseStyle} opacity-0 translate-x-96 scale: 45 ms:scale-75 z-10 md:opacity-30`);
+                                    return (`${baseStyle} opacity-0 translate-x-96 scale: 45 sm:scale-75 z-10 md:opacity-30`);
                                 }
                                 else if (position == -1) {
-                                    return (`${baseStyle} opacity-0 -translate-x-80 scale:50 ms:scale-90 z-20 md:opacity-60`);
+                                    return (`${baseStyle} opacity-0 -translate-x-80 scale:50 sm:scale-85 z-20 md:opacity-60`);
                                 }
                                 else if (position == -2) {
-                                    return (`${baseStyle} opacity-0 -translate-x-96 scale:45 ms:scale-75 z-10 md:opacity-30`);
+                                    return (`${baseStyle} opacity-0 -translate-x-96 scale:45 sm:scale-75 z-10 md:opacity-30`);
                                 }
                                 else {
                                     return (`${baseStyle} opacity-0 scale-75 z-0 `);
@@ -138,16 +138,16 @@ function Testimonials() {
                                 <div key={card.id} className={getCardStyle()} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                                     <div className="flex flex-col h-full justify-between text-white">
                                         <div>
-                                            <div className="h-35 w-35 sm:h-50 sm:w-50 bg-amber-100 translate-x-20 sm:translate-x-35 border-white/20 rounded-full translate-y-5 sm:-translate-y-13">
+                                            <div className="h-35 w-35 sm:h-50 sm:w-50 translate-x-20 sm:translate-x-35 border-none rounded-full translate-y-5 sm:-translate-y-13">
                                                 <img src={card.image}
                                                     alt={card.author}
                                                     className="h-full w-full object-cover rounded-full" />
                                             </div>
-                                            <h1 className="pt-15 sm:pt-0 text-2xl font-bold mb-4 text-purple-300">{card.title}</h1>
-                                            <p className="text-base leading-relaxed mb-6 text-gray-200">{card.description}</p>
+                                            <h1 className="pt-15 sm:pt-0 text-2xl font-bold mb-4 text-purple-300 relative">{card.title}</h1>
+                                            <p className="font-sans leading-relaxed mb-0 text-gray-200 absolute top-6/12 w-10/12">{card.description}</p>
                                         </div>
                                         <div className="border-t border-white/20 pt-4">
-                                            <p className="font-semibold text-lg">{card.author}</p>
+                                            <p className="font-semibold font-sans text-lg">{card.author}</p>
                                             <p className="text-sm text-purple-300">{card.role}</p>
                                         </div>
                                     </div>
@@ -158,20 +158,20 @@ function Testimonials() {
                     {/*navigation button */}
                     <button
                         onClick={prevSlide}
-                        className="absolute left-0 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
+                        className="absolute left-0 top-4/12 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
                         aria-label="Previous testimonial"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
 
                     <button
                         onClick={nextSlide}
-                        className="absolute right-0 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
+                        className="absolute right-0 top-4/12 z-40 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 border border-white/30"
                         aria-label="Next testimonial"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                     </button>

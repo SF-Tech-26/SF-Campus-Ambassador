@@ -105,7 +105,7 @@ const SignInForm = () => {
       </p>
     )}
 
-    <div className="grid grid-cols-1 gap-4">
+    <div className="flex flex-col">
       {["email", "password"].map((key) => (
         <label key={key} className="block">
           <span className="text-xs text-white/60 mb-2 capitalize inline-block">
@@ -132,11 +132,12 @@ const SignInForm = () => {
       {loading ? "Signing in..." : "Sign In"}
     </button>
 
-      {/* <div className="flex items-center gap-2">
-        <span className="h-1 w-8 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full opacity-60" />
-        <span>Welcome to Spring Fest</span>
-      </div> */}
-
+      <div className="mt-6 flex items-center justify-center gap-2 text-xs text-white/50">
+      <span className="h-1 w-8 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full opacity-60" />
+      <span>Welcome to Spring Fest</span>
+      <span className="h-1 w-8 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full opacity-60" />
+    </div>
+    
 <div className="mt-6 flex justify-center">
   <p className="text-sm text-white/70">
     New user?{" "}
