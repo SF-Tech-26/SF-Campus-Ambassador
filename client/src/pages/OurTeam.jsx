@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css"; 
+import "./OurTeam.css"; 
 import "font-awesome/css/font-awesome.min.css"; 
 import Navbar from "../components/Navbar";
 
