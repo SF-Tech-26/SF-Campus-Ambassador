@@ -29,7 +29,7 @@ const ViewProfile = () => {
                 </h1>
 
                 {/* Profile Card */}
-                <div className="max-w-5xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-2xl border border-white/20">
+                
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                         {/* Left Column */}
@@ -96,7 +96,7 @@ const ViewProfile = () => {
                             {user.yearOfPass}
                         </p>
                     </div>
-                </div>
+                
             </div>
         </div>
     );
