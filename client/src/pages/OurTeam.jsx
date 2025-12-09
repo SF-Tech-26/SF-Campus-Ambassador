@@ -6,7 +6,7 @@ import {
   FaInstagram,
   FaLinkedin,
   FaWhatsapp,
-} from "react-icons/fa";
+} from "react-icons/fa"; 
 
 import member1 from "../components/images/member1.jpg";
 import member2 from "../components/images/member2.jpg";
