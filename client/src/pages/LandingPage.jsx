@@ -16,10 +16,11 @@ export const LandingPage = () => {
     <Perks />
     <Testimonials/>
     <FAQ />
-    <div id ="ourteam">
-    <OurTeam />
+    <div id="ourteam" className="scroll-mt-25">
+       <OurTeam />
     </div>
-    </>
 
+
+    </>
   )
 }
