@@ -11,7 +11,7 @@ import {
 import member1 from "../components/images/member1.jpg";
 import member2 from "../components/images/member2.jpg";
 import member3 from "../components/images/member3.jpg";
-import bgImage from "../components/images/PAT00872.JPG";
+import bgImage from "../components/images/PAT09155.jpg";
 
 const OurTeam = () => {
   return (
@@ -28,7 +28,7 @@ const OurTeam = () => {
       <div className="flex justify-center items-start flex-wrap gap-12 mt-20 pb-20">
 
         {/* -------- Member 1 -------- */}
-        <div className="bg-black/80 rounded-xl shadow-xl w-64 h-[350px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-red-500/70">
+        <div className="bg-black/80 rounded-xl shadow-xl w-64 h-[350px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-blue-500/70">
           <img
             src={member1}
             alt="Member 1"
@@ -77,7 +77,7 @@ const OurTeam = () => {
         </div>
 
         {/* -------- Member 2 -------- */}
-        <div className="bg-black/80 rounded-xl shadow-xl w-64 h-[350px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-red-500/70">
+        <div className="bg-black/80 rounded-xl shadow-xl w-64 h-[350px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-blue-500/70">
           <img
             src={member2}
             alt="Member 2"
@@ -126,7 +126,7 @@ const OurTeam = () => {
         </div>
 
         {/* -------- Member 3 -------- */}
-        <div className="bg-black/80 rounded-xl shadow-xl w-64 h-[350px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-red-500/70">
+        <div className="bg-black/80 rounded-xl shadow-xl w-64 h-[350px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-blue-500/70">
           <img
             src={member3}
             alt="Member 3"
