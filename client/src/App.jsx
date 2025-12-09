@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
-
+import Testimonials from './components/testimonials2'
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
 import ViewProfile from "./pages/ViewProfile";
@@ -14,7 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-import Testimonials from './components/testimonials2'
+
 
   return (
     <nav className="absolute top-0 w-full flex justify-between p-4 text-white z-20 font-semibold">

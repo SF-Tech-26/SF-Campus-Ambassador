@@ -1,5 +1,7 @@
 import React from 'react'
-import ParticleBackground from "../components/ParticleBackground";
+//import ParticleBackground from "../components/ParticleBackground";
+import background from "../assets/SAM02403.JPG";
+import logo from "../assets/sf_logo.bea788dbe4b626510928.png";
 
 const ViewProfile = () => {
 
@@ -17,90 +19,84 @@ const ViewProfile = () => {
         yearOfPass: "2026",
     };
 
-    return (
-        <div className="relative min-h-screen text-white overflow-hidden">
-            <ParticleBackground />
+   {
+  return (
+    <div
+      className="w-full min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center relative p-6"
+      style={{ backgroundImage: `url(${background})` }}
+    >
+      {/* Title */}
+      <h1 className="text-white text-4xl md:text-5xl font-semibold tracking-wide mt-6">
+        Your Profile
+      </h1>
 
-            {/* Main Container */}
-            <div className="relative z-10 px-6 py-10 md:px-16 lg:px-24">
-                {/* Heading */}
-                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-500 text-transparent bg-clip-text">
-                    Your Profile
-                </h1>
+      {/* Fest & College */}
+      <h2 className="text-white text-5xl md:text-6xl font-serif tracking-wide mt-4">
+        Spring Fest
+      </h2>
+      <h3 className="text-white text-2xl md:text-3xl font-light tracking-wide mt-2">
+        IIT Kharagpur
+      </h3>
 
-                {/* Profile Card */}
-                <div className="max-w-5xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-2xl border border-white/20">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Logo */}
+      <img
+        src={logo}
+        alt="Logo"
+        className="w-60 md:w-80 mt-10 drop-shadow-lg"
+      />
 
-                        {/* Left Column */}
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-semibold text-red-300">SF ID</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.sfid}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">Name</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.name}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">State</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.state}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">City</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.city}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">College</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.college}</p>
-                            </div>
-                        </div>
-
-                        {/* Right Column */}
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">Mobile</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.mobile}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">Email</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.email}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">Gender</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.gender}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">Alternate Email</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.altEmail}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-300">Date of Birth</label>
-                                <p className="bg-white/10 rounded-lg px-4 py-2">{user.dob}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Year of Pass */}
-                    <div className="mt-10 text-center">
-                        <label className="block text-sm font-semibold text-gray-300 mb-1">Year of Passing</label>
-                        <p className="bg-white/10 rounded-lg inline-block px-8 py-2 text-lg font-semibold tracking-wide">
-                            {user.yearOfPass}
-                        </p>
-                    </div>
-                </div>
-            </div>
+      {/* Profile Info Boxes */}
+      <div className="mt-12 w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+        
+        {/* Column 1 */}
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">SFID:</p>
         </div>
-    );
 
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">Name:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">College:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">City:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">State:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">Date of Birth:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">Gender:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">Phone Number:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">E-Mail:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30">
+          <p className="text-white text-xl">Alternate E-Mail:</p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-md p-4 rounded-md border border-white/30 md:col-span-2">
+          <p className="text-white text-xl">Year of Passing:</p>
+        </div>
+
+      </div>
+    </div>
+  );
+}
 }
 
 export default ViewProfile
