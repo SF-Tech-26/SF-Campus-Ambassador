@@ -14,21 +14,6 @@ import sf_concert from '../assets/sf_concert.png'
 import kgp_logo from '../assets/logo-kgp.png'
 
 const HomePage = () => {
-  const [showIcons, setShowIcons] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight * 0.6; // detect when user scrolls past 90% of viewport
-      if (window.scrollY > heroHeight) {
-        setShowIcons(false);
-      } else {
-        setShowIcons(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   return (
 
     <div id="home" className="overflow-x-hidden">
@@ -45,7 +30,7 @@ const HomePage = () => {
             backgroundAttachment: 'scroll'
           }}
         >
-          <div className="absolute left-8 top-24 flex flex-col gap-3 z-10">
+          <div className="absolute left-8 top-24 flex flex-row items-center gap-3 z-10">
             <a href="https://springfest.in" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105">
               <img src={SF_logo} alt="SF Logo" className="w-auto h-20 cursor-pointer" />
             </a>
@@ -74,11 +59,11 @@ const HomePage = () => {
 
           {/* Band Image - Bottom Left - Above Social Icons with Slide Animation */}
           <div
-            className="absolute bottom-4 lg:bottom-6 xl:bottom-8 2xl:bottom-10 left-0 animate-slideUp"
+            className="absolute bottom-4 lg:bottom-6 xl:bottom-8 2xl:bottom-10 left-0"
             style={{
-              animation: 'slideUp 1.2s ease-out forwards',
+              animation: 'slideInLeft 1.2s ease-out forwards',
               animationDelay: '0.3s',
-              transform: 'translateY(150%)',
+              transform: 'translateX(-100%)',
               opacity: 0
             }}
           >
@@ -100,13 +85,13 @@ const HomePage = () => {
            }
 
 
-           @keyframes slideUp {
+           @keyframes slideInLeft {
              from {
-               transform: translateY(150%);
+               transform: translateX(-100%);
                opacity: 0;
              }
              to {
-               transform: translateY(0);
+               transform: translateX(0);
                opacity: 1;
              }
            }
@@ -219,9 +204,9 @@ const HomePage = () => {
               alt="Band"
               className="w-[300px] max-w-full mt-4"
               style={{
-                animation: 'slideUp 1.2s ease-out forwards',
+                animation: 'slideInLeft 1.2s ease-out forwards',
                 animationDelay: '0.3s',
-                transform: 'translateY(150%)',
+                transform: 'translateX(-100%)',
                 opacity: 0
               }}
             />
@@ -231,17 +216,16 @@ const HomePage = () => {
 
       </div>
 
-      
+
       <div
-        className={`fixed bottom-6 right-6 z-[40] flex flex-row items-center gap-8 transition-opacity duration-700 ${showIcons ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
+        className="absolute bottom-6 right-6 z-[40] flex flex-row items-center gap-8"
       >
         {[
-          { icon: facebookIcon, link: "https://facebook.com", alt: "Facebook" },
-          { icon: youtubeIcon, link: "https://youtube.com", alt: "YouTube" },
-          { icon: instagramIcon, link: "https://instagram.com", alt: "Instagram" },
-          { icon: xIcon, link: "https://x.com", alt: "X" },
-          { icon: linkedinIcon, link: "https://linkedin.com", alt: "LinkedIn" },
+          { icon: facebookIcon, link: "https://www.facebook.com/springfest.iitkgp/", alt: "Facebook" },
+          { icon: youtubeIcon, link: "https://www.youtube.com/@SpringFest.", alt: "YouTube" },
+          { icon: instagramIcon, link: "https://www.instagram.com/iitkgp.springfest/", alt: "Instagram" },
+          { icon: xIcon, link: "https://x.com/springfest_kgp", alt: "X" },
+          { icon: linkedinIcon, link: "https://in.linkedin.com/company/spring-fest", alt: "LinkedIn" },
         ].map(({ icon, link, alt }) => (
           <a
             key={alt}
