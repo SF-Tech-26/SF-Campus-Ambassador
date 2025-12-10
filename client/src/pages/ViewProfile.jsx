@@ -63,7 +63,7 @@ const ViewProfile = () => {
                         {/* Right Column */}
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">Mobile</label>
+                                <label className="block text-sm font-semibold text-red-300">Mobile</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.mobile}</p>
                             </div>
 
