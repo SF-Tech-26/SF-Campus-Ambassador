@@ -100,7 +100,7 @@ function AboutUs() {
                     </h1>
 
                     <p className="body-font text-xl md:text-2xl leading-relaxed mt-8">
-                        , IIT Kharagpur is one of the largest Social and Cultural Fests in India.
+                        IIT Kharagpur is one of the largest Social and Cultural Fests in India.
                         Embodying the true spirit of youth, Spring Fest provides a platform
                         for young talent from all over India to showcase their varied talents.
                         As we enter into the <strong>66th edition</strong>, all we are looking forward to is to
