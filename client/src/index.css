@@ -27,6 +27,8 @@ html {
 
 /* 🌌 PAGE BACKGROUND */
 body {
+  background: url("/page-bg.png") no-repeat center center fixed;
+  background-size: cover;
   color: white;
   font-family: 'Combo', cursive;
   overflow-x: hidden;
