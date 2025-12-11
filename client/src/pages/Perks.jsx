@@ -59,7 +59,7 @@ function Perks() {
   }, []);
 
   return (
-    <div className="wrapper px-4">
+    <div id="perks" className="wrapper px-4">
       <h1 className="text-5xl text-glow">What You’ll Get</h1>
       <p className="pill mb-8">
         Being an ambassador comes with incredible perks and opportunities

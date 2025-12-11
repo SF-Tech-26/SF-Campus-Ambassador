@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import './AboutUs.css'; 
+import './AboutUs.css';
 
-import aboutUsBackground from '../assets/about-us-copy.png'; 
+import aboutUsBackground from '../assets/about-us-copy.png';
 
 // --- Helper Functions (Refactored from your old script) ---
 
 // Formats the final number for display after the animation is complete
 const formatFinalNumber = (numId, value) => {
-  const num = parseInt(value, 10);
-  if (numId === 'stat-hits') {
-    return `${(num / 100000).toFixed(0)} lakh+`;
-  } else if (numId === 'stat-colleges' || numId === 'stat-footfalls') {
-    return `${num.toLocaleString('en-IN')}+`;
-  }
-  return num.toLocaleString('en-IN');
+    const num = parseInt(value, 10);
+    if (numId === 'stat-hits') {
+        return `${(num / 100000).toFixed(0)} lakh+`;
+    } else if (numId === 'stat-colleges' || numId === 'stat-footfalls') {
+        return `${num.toLocaleString('en-IN')}+`;
+    }
+    return num.toLocaleString('en-IN');
 };
 
 // --- The Main Component ---
@@ -48,7 +48,7 @@ function AboutUs() {
                 } else {
                     displayValue = current.toLocaleString('en-IN');
                 }
-                
+
                 setter(displayValue); // Update React State
 
                 if (progress < 1) {
@@ -68,7 +68,7 @@ function AboutUs() {
                     const id = entry.target.id;
                     const target = entry.target.getAttribute('data-target');
                     const setter = statSetters[id];
-                    
+
                     if (setter) {
                         animateCount(id, target, setter);
                         observer.unobserve(entry.target);
@@ -82,17 +82,18 @@ function AboutUs() {
 
         // Cleanup function for the observer when the component is unmounted
         return () => observer.disconnect();
-    }, []); 
+    }, []);
 
     // --- The Render/JSX Part (Your HTML body) ---
     return (
         // Apply the background image using the imported path and inline style
-        <section 
+        <section
+            id="aboutus"
             className="hero flex items-center justify-center"
-            style={{backgroundImage: `url(${aboutUsBackground})`}}
+            style={{ backgroundImage: `url(${aboutUsBackground})` }}
         >
             <div className="relative z-10 max-w-[1280px] w-full flex flex-col md:flex-row content-wrapper justify-between px-4 pt-32 pb-16 overlay-content">
-                
+
                 <div className="max-w-3xl md:pl-12">
                     <h1 className="heading-font black-text-red-stroke text-[80px] md:text-[120px] leading-none drop-shadow-lg">
                         Spring Fest
