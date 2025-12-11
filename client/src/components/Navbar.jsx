@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -20,7 +20,7 @@ const Navbar = () => {
     const navigate = useNavigate();
     // Navigation links data
     const navLinks = [
-        { name: 'HOME', href: '#home', active: true },
+        { name: 'HOME', href: '#home' },
         { name: 'ABOUT US', href: '#aboutus' },
         { name: 'CA PROGRAM', href: '#caprogram' },
         { name: 'PERKS', href: '#perks' },
@@ -29,6 +29,36 @@ const Navbar = () => {
         { name: 'TEAM', href: '#ourteam' },
         { name: 'FAQ', href: '#faq' },
     ];
+
+    const [activeSection, setActiveSection] = useState('home');
+
+    useEffect(() => {
+        const handleIntersect = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(handleIntersect, {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px', // Trigger when element is in the middle of viewport
+            threshold: 0
+        });
+
+        navLinks.forEach((link) => {
+            const sectionId = link.href.substring(1);
+            const section = document.getElementById(sectionId);
+            if (section) {
+                observer.observe(section);
+            }
+        });
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
 
     return (
         <nav className="font-jaro fixed top-0 left-0 right-0 z-50">
@@ -40,7 +70,7 @@ const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className={`nav-link-hover hover:text-[#E83030] px-3 py-2 ${link.active ? 'nav-link-active text-[#E83030]' : ''
+                                className={`nav-link-hover hover:text-[#E83030] px-3 py-2 ${activeSection === link.href.substring(1) ? 'nav-link-active text-[#E83030]' : ''
                                     }`}
                                 style={{
                                     fontWeight: 500,
@@ -133,7 +163,7 @@ const Navbar = () => {
                                             ? 'translate-x-0 opacity-100'
                                             : '-translate-x-8 opacity-0'
                                         } 
-            ${link.active ? 'text-[#E83030] bg-white/10' : ''}`}
+            ${activeSection === link.href.substring(1) ? 'text-[#E83030] bg-white/10' : ''}`}
                                     style={{
                                         fontWeight: 500,
                                         transition: 'opacity 300ms, transform 300ms',
