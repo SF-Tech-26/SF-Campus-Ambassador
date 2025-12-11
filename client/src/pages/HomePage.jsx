@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import ParticleEffect from '../components/ParticleEffect'
-import SF_logo from '../assets/Untitled_design-removebg-preview.png'
+import SF_logo from '../assets/SF-logo-removedbg-no-text.png'
 import Disc from '../assets/Disc-removebg-preview.png'
 import BandImage from '../assets/Band-removebg-preview.png'
 import facebookIcon from '../assets/facebook.png'

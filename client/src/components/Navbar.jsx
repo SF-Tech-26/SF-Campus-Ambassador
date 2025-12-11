@@ -93,7 +93,7 @@ const Navbar = () => {
                 {/* Hamburger button */}
                 <button
                     id="menu-toggle"
-                    className={`fixed top-4 left-4 z-50 p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 bg-black text-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'
+                    className={`fixed top-4 left-4 z-50 p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 bg-transparent text-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'
                         }`}
                     aria-label="Toggle menu"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
