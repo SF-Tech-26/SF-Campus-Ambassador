@@ -1,6 +1,5 @@
 import React from 'react'
-import ParticleBackground from "../components/ParticleBackground";
-
+import background from "../assets/Profile-img.JPG"
 const ViewProfile = () => {
 
     const user = {
@@ -18,44 +17,46 @@ const ViewProfile = () => {
     };
 
     return (
-        <div className="relative min-h-screen text-white overflow-hidden">
-            <ParticleBackground />
+        <div className="relative min-h-screen text-white overflow-hidden"
+          style={
+        { backgroundImage: `url(${background})` }}>          
 
             {/* Main Container */}
             <div className="relative z-10 px-6 py-10 md:px-16 lg:px-24">
                 {/* Heading */}
-                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-500 text-transparent bg-clip-text">
+                <div className="flex justify-center">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-red-400 via-yellow-500 to-blue-500 text-transparent bg-clip-text">
                     Your Profile
                 </h1>
-
+                </div>
                 {/* Profile Card */}
-                <div className="max-w-5xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-2xl border border-white/20">
+                
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                         {/* Left Column */}
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-semibold text-red-300">SF ID</label>
+                                <label className="block text-sm font-semibold text-gray-300">SF ID:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.sfid}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">Name</label>
+                                <label className="block text-sm font-semibold text-gray-300">Name:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.name}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">State</label>
+                                <label className="block text-sm font-semibold text-gray-300">State:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.state}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">City</label>
+                                <label className="block text-sm font-semibold text-gray-300">City:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.city}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">College</label>
+                                <label className="block text-sm font-semibold text-gray-300">College:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.college}</p>
                             </div>
                         </div>
@@ -63,27 +64,27 @@ const ViewProfile = () => {
                         {/* Right Column */}
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-semibold text-red-300">Mobile</label>
+                                <label className="block text-sm font-semibold text-gray-300">Mobile:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.mobile}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">Email</label>
+                                <label className="block text-sm font-semibold text-gray-300">Email:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.email}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">Gender</label>
+                                <label className="block text-sm font-semibold text-gray-300">Gender:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.gender}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">Alternate Email</label>
+                                <label className="block text-sm font-semibold text-gray-300">Alternate Email:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.altEmail}</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-300">Date of Birth</label>
+                                <label className="block text-sm font-semibold text-gray-300">Date of Birth:</label>
                                 <p className="bg-white/10 rounded-lg px-4 py-2">{user.dob}</p>
                             </div>
                         </div>
@@ -91,12 +92,12 @@ const ViewProfile = () => {
 
                     {/* Year of Pass */}
                     <div className="mt-10 text-center">
-                        <label className="block text-sm font-semibold text-gray-300 mb-1">Year of Passing</label>
+                        <label className="block text-sm font-semibold text-gray-300 mb-1">Year of Passing:</label>
                         <p className="bg-white/10 rounded-lg inline-block px-8 py-2 text-lg font-semibold tracking-wide">
                             {user.yearOfPass}
                         </p>
                     </div>
-                </div>
+                
             </div>
         </div>
     );
