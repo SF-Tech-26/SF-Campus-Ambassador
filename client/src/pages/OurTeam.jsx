@@ -16,7 +16,7 @@ import bgImage from "../components/images/PAT09155.jpg";
 const OurTeam = () => {
   return (
     <div
-      className="min-h-screen text-white text-center bg-cover bg-center bg-no-repeat"
+      className="min-h-screen text-white text-center bg-cover bg-center bg-fixed bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="w-full pt-24">
