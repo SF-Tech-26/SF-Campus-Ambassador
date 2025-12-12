@@ -1,11 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
-<<<<<<< HEAD
 import FAQ from "./pages/FAQ";
-=======
-import Testimonials from './components/testimonials2'
->>>>>>> Dashboard
 import Dashboard from "./pages/Dashboard";
 import FormPage from "./pages/FormPage";
 import ViewProfile from "./pages/ViewProfile";
@@ -13,48 +9,11 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-<<<<<<< HEAD
 import Testimonials from './components/testimonials';
 import AboutPage from "./pages/AboutUs";
 import { LandingPage } from "./pages/LandingPage";
 import Responsibility from "./pages/Responsibility";
 import OurTeam from "./pages/OurTeam";
-=======
-
-function Navbar() {
-  const { token, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-
-  return (
-    <nav className="absolute top-0 w-full flex justify-between p-4 text-white z-20 font-semibold">
-      <Link to="/" className="hover:text-cyan-400 transition">
-        Home
-      </Link>
-
-      {token ? (
-        <button
-          onClick={() => {
-            logout();
-            navigate("/signin");
-          }}
-          type="button"
-          className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
-        >
-          Logout
-        </button>
-      ) : (
-        <Link
-          to="/signin"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
-        >
-          Sign In
-        </Link>
-      )}
-    </nav>
-  );
-}
->>>>>>> Dashboard
 
 export default function App() {
   return (
