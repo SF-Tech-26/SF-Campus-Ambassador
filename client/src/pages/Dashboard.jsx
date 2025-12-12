@@ -203,7 +203,8 @@ function Navbar() {
   );
 }
 
-const Dashboard = () => {
+const Dashboard = () => 
+  {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
   const [submittedData, setSubmittedData] = useState(null);
@@ -301,12 +302,12 @@ useEffect(() => {
 
     <div className="relative z-10 py-20 md:py-24 px-4 sm:px-6 md:px-8">
       <div className="text-center mb-10 md:mb-14">
-        <h1
-          className="font-jaro text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-3"
+        <h2
+          className="font-jaro text-5xl sm:text-7xl md:text-7xl font-extrabold text-white mb-3"
           style={{ letterSpacing: "0.1em" }}
         >
           DASHBOARD
-        </h1>
+        </h2>
         <p
           className="text-gray-200 text-sm sm:text-base opacity-90"
           style={{ letterSpacing: "0.15em" }}
@@ -316,21 +317,23 @@ useEffect(() => {
       </div>
 
       {/* Spell Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-10 md:mb-14">
-        <button onClick={() => navigate("/viewprofile")} className="w-full">
+      <div className="flex flex-col sm:flex-row gap-6 md:gap-8 mb-10 md:mb-14">
+        <button onClick={() => navigate("/viewprofile")} className="bg-white/20 w-full">
           <GlassCard icon="👤">
             <p>View Profile</p>
           </GlassCard>
         </button>
+        <div className="bg-white/20 w-full">
         <GlassCard icon="🏆">
           <p>#1 Your Standings</p>
         </GlassCard>
-        <button onClick={() => navigate("/guidelines")} className="w-full">
+        </div>
+        <button onClick={() => navigate("/guidelines")} className="bg-white/20 w-full">
           <GlassCard icon="📜">
             <p>Guidelines</p>
           </GlassCard>
         </button>
-        <button onClick={() => navigate("/leaderboard")} className="w-full">
+        <button onClick={() => navigate("/leaderboard")} className="bg-white/20 w-full">
           <GlassCard icon="🎯">
             <p>Leaderboard</p>
           </GlassCard>
@@ -382,7 +385,7 @@ useEffect(() => {
                   {/* SIMPLE BLUE BUTTON — clean & modern */}
                   <td className="px-3">
                     <button
-                      onClick={() => console.log("Navigate to form")}
+                      onClick={() => navigate("/form")}
                       className="bg-blue-600 hover:bg-blue-700 px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shadow-md text-white"
                     >
                       Click Here

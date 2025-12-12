@@ -22,6 +22,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 /* 🌌 PAGE BACKGROUND */
@@ -41,7 +42,6 @@ h1 {
   font-family: 'Cinzel', serif !important;
   font-size: clamp(2rem, 5vw, 60px);
   text-align: center;
-  margin-top: 80px;
 }
 
 h2 {
