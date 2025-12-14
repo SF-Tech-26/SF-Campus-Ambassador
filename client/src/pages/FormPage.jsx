@@ -49,7 +49,7 @@ const FormPage = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center text-white px-4">
+    <div className="relative min-h-screen flex items-center justify-center text-white px-4 overflow-hidden">
       <ParticleBackground />
       <div className="relative z-10 w-full max-w-sm sm:max-w-md md:max-w-lg">
         <GlassCard>
