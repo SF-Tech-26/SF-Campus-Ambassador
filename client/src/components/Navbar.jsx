@@ -24,6 +24,7 @@ const Navbar = () => {
         { name: 'CA PROGRAM', href: '#' },
         { name: 'PERKS', href: '#' },
         { name: 'RESPONSIBILITY', href: '#' },
+        { name: 'LEADERBOARD', href: '/leaderboard' },
         { name: 'TESTIMONIALS', href: '#' },
         { name: 'TEAM', href: '#' },
         { name: 'FAQ', href: '#' },

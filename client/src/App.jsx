@@ -11,6 +11,7 @@ import ViewProfile from "./pages/ViewProfile";
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import Leaderboard from "./pages/Leaderboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 // Removed duplicate import: testimonials was already imported above as './components/testimonials2'
 
@@ -81,6 +82,7 @@ export default function App() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />}/>
+          <Route path="/leaderboard" element={<Leaderboard />}/>
         </Routes>
       </Router>
     </AuthProvider>
