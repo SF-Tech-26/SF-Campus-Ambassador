@@ -11,6 +11,7 @@ import ViewProfile from "./pages/ViewProfile";
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import Leaderboard from "./pages/Leaderboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Testimonials from './components/testimonials';
 import AboutPage from "./pages/AboutUs";
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/leaderboard" element={<Leaderboard />}/>
         </Routes>
       </Router>
     </AuthProvider>
