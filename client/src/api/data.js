@@ -32,3 +32,15 @@ export const fetchSubmittedData = async (token) => {
   const res = await axios.post("https://masterapi-springfest.vercel.app/api/cap/receiveCASubmittedData", { token });
   return res.data;
 };
+
+export const getAllUsers = async (token) => {
+  // Fetch all CA users and their leaderboard data
+  const res = await axios.post("https://masterapi.springfest.in/api/cap/getAllCAUsers", { token });
+  return res.data;
+};
+
+export const getLeaderboardData = async (token) => {
+  // Get leaderboard with points calculated from tasks
+  const res = await axios.post("https://masterapi.springfest.in/api/cap/leaderboard", { token });
+  return res.data;
+};
