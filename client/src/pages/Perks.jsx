@@ -65,7 +65,7 @@ function Perks() {
         Being an ambassador comes with incredible perks and opportunities
       </p>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid-2 grid-cols-3 gap-6">
         {perks.map((perk, i) => (
           <div
             key={i}
