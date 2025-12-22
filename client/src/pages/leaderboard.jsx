@@ -4,7 +4,7 @@ import LeaderboardCard from '../components/LeaderboardCard';
 import ParticleEffect from '../components/ParticleEffect';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../context/AuthContext';
-import { getLeaderboardData } from '../api/data';
+// import { getLeaderboardData } from '../api/data';
 
 const Leaderboard = () => {
   const { token, user } = useContext(AuthContext);
