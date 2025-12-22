@@ -17,6 +17,7 @@ import OurTeam from "./pages/OurTeam";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Leaderboard from "./pages/Leaderboard";
 
 
 export default function App() {
@@ -56,6 +57,7 @@ export default function App() {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/ourteam" element={<OurTeam />} />
+          <Route path = "/leaderboard" element={<Leaderboard/>}/>
         </Routes>
       </Router>
     </AuthProvider>
