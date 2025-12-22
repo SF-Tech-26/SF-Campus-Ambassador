@@ -17,7 +17,7 @@ import OurTeam from "./pages/OurTeam";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Leaderboard from "./pages/Leaderboard";
+import Leaderboard from "./pages/leaderboard.jsx";
 
 
 export default function App() {
