@@ -51,7 +51,16 @@ const SignUpForm = () => {
         payload?.data?.token ||
         null;
 
-      if (!token) throw new Error("No token received from server");
+      // if (!token) throw new Error("No token received from server");
+      if (!token) {
+        const backendMsg =
+          payload?.message ||
+          payload?.error ||
+          payload?.data?.message ||
+          "Registration failed";
+
+        throw new Error(backendMsg);
+      }
 
       // Auto-login after signup
       login(token, payload?.user ?? payload ?? {});
@@ -138,8 +147,8 @@ const SignUpForm = () => {
                 key.includes("password")
                   ? "password"
                   : key === "dob"
-                  ? "date"
-                  : "text"
+                    ? "date"
+                    : "text"
               }
               name={key}
               placeholder={key.replace(/_/g, " ").toUpperCase()}

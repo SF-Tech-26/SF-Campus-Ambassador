@@ -43,8 +43,17 @@ const SignInForm = () => {
 
       const user = payload?.user ?? payload?.data ?? {};
 
+      // if (!token) {
+      //   throw new Error("No token received from server");
+      // }
       if (!token) {
-        throw new Error("No token received from server");
+        const backendMsg =
+          payload?.message ||
+          payload?.error ||
+          payload?.data?.message ||
+          "Login failed";
+
+        throw new Error(backendMsg);
       }
 
       // ✅ Save auth
