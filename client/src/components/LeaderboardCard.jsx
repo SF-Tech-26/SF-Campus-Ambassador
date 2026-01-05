@@ -9,7 +9,7 @@ const LeaderboardCard = ({ rank, name, college, points, isHeader = false }) => {
     return <span className="text-lg font-semibold">{rank}</span>;
   };
 
-  // Determine row style based on rank/header
+ 
   let rowStyle = "bg-slate-800/50 border-slate-700/50 hover:border-cyan-500/50";
   
   if (isHeader) {
@@ -24,7 +24,6 @@ const LeaderboardCard = ({ rank, name, college, points, isHeader = false }) => {
 
   return (
     <div className={`grid grid-cols-12 gap-4 p-4 rounded-lg border-2 transition-all ${rowStyle}`}>
-      {/* Rank - 2 cols */}
       <div className="col-span-2 flex items-center justify-center">
         {isHeader ? (
           <span className="font-bold text-white">Rank</span>
@@ -33,7 +32,7 @@ const LeaderboardCard = ({ rank, name, college, points, isHeader = false }) => {
         )}
       </div>
 
-      {/* Name - 3 cols */}
+    
       <div className="col-span-3 flex items-center">
         {isHeader ? (
           <span className="font-bold text-white">Name</span>
