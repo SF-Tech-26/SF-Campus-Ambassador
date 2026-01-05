@@ -120,7 +120,7 @@ const TitlePlatform = () => (
 );
 
 // 3. Floating Emoji Component
-const FloatingEmoji = ({ e }) => (
+const FloatingEmoji = ({ e }) =>(
     <div
         key={e.id}
         className="absolute text-2xl pointer-events-none z-[100] animate-[popAndFloat_2s_forwards_ease-out]"
