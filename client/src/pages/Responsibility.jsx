@@ -112,15 +112,14 @@ const FanSpinner = React.memo(({ angle, isRightAligned }) => (
 // 2. Header Component
 const TitlePlatform = () => (
     <header className=" text-center pt-16 md:pt-24 flex justify-center ">
-        <div className="bg-slate-800/75   backdrop-blur-sm  p-6 md:p-10 rounded-xl border border-cyan-200/20 mb-10 md:mb-16 shadow-2xl shadow-cyan-400/40 animate-[floatTitle_6s_ease-in-out_infinite] relative z-50"
-        >
-            <h1 className="text-4xl  sm:text-5xl lg:text-6xl  font-extrabold  text-blue-400">Responsibility</h1>
+        <div className="bg-white/5 backdrop-blur-md p-6 md:p-10 rounded-2xl border border-white/10 mb-10 md:mb-16 shadow-[0_0_40px_rgba(6,182,212,0.15)] animate-[floatTitle_6s_ease-in-out_infinite] relative z-50">
+            <h1 className="font-jaro text-4xl sm:text-5xl lg:text-6xl text-white tracking-widest drop-shadow-lg">RESPONSIBILITY</h1>
         </div>
     </header>
 );
 
 // 3. Floating Emoji Component
-const FloatingEmoji = ({ e }) =>(
+const FloatingEmoji = ({ e }) => (
     <div
         key={e.id}
         className="absolute text-2xl pointer-events-none z-[100] animate-[popAndFloat_2s_forwards_ease-out]"
@@ -168,16 +167,15 @@ const TimelineStep = React.forwardRef(({ step, isVisible, fanAngle }, ref) => {
 
             {/* Timeline Card */}
             <div className={`
-                relative bg-slate-800/80 backdrop-blur-5xl border-4 p-5 rounded-lg shadow-xl hover:shadow-blue-500/70 transition-all duration-300 
-                
-                ${isRightAligned
-                    ? 'border-r-blue-500'
-                    : 'border-l-blue-500'
+                relative bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.25)] transition-all duration-300 
+                ${isRightAligned
+                    ? 'border-r-4 border-r-blue-500'
+                    : 'border-l-4 border-l-blue-500'
                 }
-            `}
+            `}
             >
-                <h2 className="text-xl font-bold text-blue-300 md:text-2xl">{step.title}</h2>
-                <p className="mt-2 text-slate-300 text-sm md:text-base">{step.description}</p>
+                <h2 className="font-jaro text-2xl md:text-3xl text-white mb-2 tracking-wide">{step.title}</h2>
+                <p className="mt-2 text-gray-300 text-sm md:text-base leading-relaxed font-light">{step.description}</p>
 
                 {/* Step Marker */}
                 <div

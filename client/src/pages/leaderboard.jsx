@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Trophy, Crown, Star, Sparkles } from 'lucide-react';
+import { Trophy, Crown, Star, Sparkles, ArrowLeft } from 'lucide-react';
 import LeaderboardCard from '../components/LeaderboardCard';
 import ParticleEffect from '../components/ParticleEffect';
-import Navbar from '../components/Navbar';
 import { AuthContext } from '../context/AuthContext';
-// import { getLeaderboardData } from '../api/data';
+import { fetchScoreboard } from '../api/data';
+import { useNavigate } from 'react-router-dom';
 
 const Leaderboard = () => {
   const { token, user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [error, setError] = useState(null);
@@ -28,40 +29,34 @@ const Leaderboard = () => {
           return;
         }
 
-        if (!user) {
-          setError('User data not loaded. Please refresh the page.');
-          setLeaderboardData([]);
-          setIsLoading(false);
-          return;
-        }
+        const data = await fetchScoreboard(token);
+        console.log('Leaderboard API response:', data);
 
-        console.log('Building leaderboard from logged-in user:', user);
-        
-        // Use only the actual logged-in user data from AuthContext
-        // No dummy data - just show the current user
-        const currentUserData = [{
-          name: user.name || 'User',
-          college: user.college || user.institution || 'College',
-          points: 0, // Points will be calculated from tasks in Dashboard
-          email: user.email || '',
-          isCurrentUser: true
-        }];
+        // Assume data is an array of objects { name, college, points, email, ... }
+        // Adjust based on actual API response structure if needed
+        const list = Array.isArray(data) ? data : (data.data || []);
 
-        // Map to leaderboard format with rank
-        const formatted = currentUserData.map((item, index) => ({
+        // Sort by points descending just in case
+        const sorted = list.sort((a, b) => b.points - a.points);
+
+        const formatted = sorted.map((item, index) => ({
           rank: index + 1,
           name: item.name,
           college: item.college,
           points: item.points,
           email: item.email,
-          isCurrentUser: item.isCurrentUser
+          isCurrentUser: user && item.email === user.email
         }));
 
         setLeaderboardData(formatted);
-        setMyRank(1);
-        setMyPoints(formatted[0].points);
-        
-        console.log('Leaderboard ready with user:', formatted[0].name, 'from', formatted[0].college);
+
+        if (user) {
+          const myEntry = formatted.find(u => u.email === user.email);
+          if (myEntry) {
+            setMyRank(myEntry.rank);
+            setMyPoints(myEntry.points);
+          }
+        }
 
       } catch (e) {
         console.error('Leaderboard error:', e);
@@ -81,9 +76,15 @@ const Leaderboard = () => {
         <ParticleEffect />
       </div>
 
-      <Navbar />
+      <div className="relative z-10 container mx-auto px-4 pt-8 pb-16">
 
-      <div className="relative z-10 container mx-auto px-4 pt-36 pb-16">
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="mb-8 flex items-center text-gray-400 hover:text-white transition-colors group"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+          Back to Dashboard
+        </button>
 
         {/* HEADER */}
         <div className="text-center mb-14">
@@ -116,8 +117,8 @@ const Leaderboard = () => {
               <div className="flex flex-col items-center justify-center py-20">
                 <div className="text-red-400 text-xl mb-4">⚠️ {error}</div>
                 {error.includes('sign in') && (
-                  <a 
-                    href="/signin" 
+                  <a
+                    href="/signin"
                     className="mt-4 px-6 py-3 bg-gradient-to-r from-indigo-600 to-pink-600 rounded-lg font-semibold hover:scale-105 transition-transform"
                   >
                     Sign In Now

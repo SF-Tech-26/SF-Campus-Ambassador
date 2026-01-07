@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 import Navbar from '../components/Navbar'
 import ParticleEffect from '../components/ParticleEffect'
 import SF_logo from '../assets/SF-logo-removedbg-no-text.png'
@@ -12,8 +14,12 @@ import xIcon from '../assets/x.png'
 import mobileBandImage from '../assets/mobileBand-removebg-preview.png'
 import sf_concert from '../assets/sf_concert.png'
 import kgp_logo from '../assets/logo-kgp.png'
+import WhatIsCA from '../components/WhatIsCA'
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const { token } = useContext(AuthContext);
+
   return (
 
     <div id="home" className="overflow-x-hidden">
@@ -52,9 +58,66 @@ const HomePage = () => {
                 perspective: '1000px'
               }}
             >
-              CAMPUS AMBASSADOR<br />
-              <span className="block mt-2">PROGRAM</span>
+              CAMPUS AMBASSADOR
             </div>
+          </div>
+
+          {/* Login / SignUp Button - Flashy Animated Version */}
+          <div
+            className="absolute"
+            style={{
+              animation: 'buttonReveal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+              animationDelay: '0.6s',
+              opacity: 0,
+              top: '65%',
+              left: '60%',
+              transform: 'translateX(-50%)'
+            }}
+          >
+            <button
+              className="group relative font-jaro text-3xl font-medium px-10 py-4 rounded-lg cursor-pointer overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, #CABC8E 0%, #E8D9A8 50%, #CABC8E 100%)',
+                boxShadow: '0 0 20px rgba(202, 188, 142, 0.4), 0 0 40px rgba(202, 188, 142, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3)',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(202, 188, 142, 0.6), 0 0 60px rgba(202, 188, 142, 0.4), 0 12px 40px rgba(0, 0, 0, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(202, 188, 142, 0.4), 0 0 40px rgba(202, 188, 142, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3)';
+              }}
+              onClick={() => {
+                navigate(token ? "/dashboard" : "/signin")
+              }}
+            >
+              {/* Animated shimmer overlay */}
+              <span
+                className="absolute inset-0 opacity-30"
+                style={{
+                  background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%)',
+                  animation: 'shimmer 2.5s infinite',
+                  transform: 'skewX(-20deg)'
+                }}
+              />
+
+              {/* Glowing pulse ring */}
+              <span
+                className="absolute inset-0 rounded-lg"
+                style={{
+                  border: '2px solid rgba(202, 188, 142, 0.6)',
+                  animation: 'pulseRing 2s infinite'
+                }}
+              />
+
+              {/* Button text */}
+              <span className="relative z-10 text-black drop-shadow-sm">
+                {token ? "Dashboard" : "Login / SignUp"}
+              </span>
+            </button>
           </div>
 
           {/* Band Image - Bottom Left - Above Social Icons with Slide Animation */}
@@ -95,6 +158,41 @@ const HomePage = () => {
                opacity: 1;
              }
            }
+
+           @keyframes buttonReveal {
+             from {
+               opacity: 0;
+               transform: translateY(20px);
+             }
+             to {
+               opacity: 1;
+               transform: translateY(0);
+             }
+           }
+
+           @keyframes shimmer {
+              0% {
+                transform: translateX(-150%) skewX(-20deg);
+              }
+              100% {
+                transform: translateX(150%) skewX(-20deg);
+              }
+            }
+
+           @keyframes pulseRing {
+              0% {
+                opacity: 1;
+                transform: scale(1);
+              }
+              50% {
+                opacity: 0.5;
+                transform: scale(1.02);
+              }
+              100% {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
 
            @keyframes glitchReveal {
              0% {
@@ -195,8 +293,7 @@ const HomePage = () => {
               }}
             >
               CAMPUS<br />
-              AMBASSADOR<br />
-              PROGRAM
+              AMBASSADOR
             </div>
 
             <img
@@ -213,10 +310,10 @@ const HomePage = () => {
           </div>
         </div>
 
-
       </div>
 
-
+      {/* What is CA Section */}
+      <WhatIsCA />
       <div
         className="absolute bottom-6 right-6 z-[40] flex flex-row items-center gap-8"
       >

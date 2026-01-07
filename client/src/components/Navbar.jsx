@@ -193,8 +193,9 @@
 // };
 
 // export default Navbar
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 /**
  * HamburgerIcon component for the mobile menu toggle.
@@ -212,18 +213,80 @@ const HamburgerIcon = () => (
 const Navbar = () => {
     // State to manage the mobile menu's open/closed status
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
     const navigate = useNavigate();
-    // Navigation links data
+    const location = useLocation();
+    const { token } = useContext(AuthContext);
+
+    // Navigation links data - ordered by appearance on page
     const navLinks = [
-        { name: 'HOME', href: '#home', active: true },
+        { name: 'HOME', href: '#home' },
+        { name: 'WHAT IS CA', href: '#caprogram' },
         { name: 'ABOUT US', href: '#aboutus' },
-        { name: 'CA PROGRAM', href: '#caprogram' },
-        { name: 'PERKS', href: '#perks' },
         { name: 'RESPONSIBILITY', href: '#responsibility' },
+        { name: 'PERKS', href: '#perks' },
         { name: 'TESTIMONIALS', href: '#testimonials' },
-        { name: 'TEAM', href: '#ourteam' },
         { name: 'FAQ', href: '#faq' },
+        { name: 'OUR TEAM', href: '#ourteam' },
     ];
+
+    // Track active section based on scroll position using IntersectionObserver
+    useEffect(() => {
+        // Only run on home page (where sections exist)
+        if (location.pathname !== '/') {
+            return;
+        }
+
+        const handleIntersect = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(handleIntersect, {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px', // Trigger when element is in the middle of viewport
+            threshold: 0
+        });
+
+        navLinks.forEach((link) => {
+            const sectionId = link.href.substring(1);
+            const section = document.getElementById(sectionId);
+            if (section) {
+                observer.observe(section);
+            }
+        });
+
+        // Handle scroll to detect when at top of page (for home section)
+        const handleScroll = () => {
+            if (window.scrollY < 100) {
+                setActiveSection('home');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Set home as active on initial load if at top
+        if (window.scrollY < 100) {
+            setActiveSection('home');
+        }
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [location.pathname]);
+
+    // Update active section from URL hash on route change
+    useEffect(() => {
+        if (location.hash) {
+            setActiveSection(location.hash.substring(1));
+        } else if (location.pathname === '/') {
+            setActiveSection('home');
+        }
+    }, [location]);
 
     return (
         <nav className="font-jaro fixed top-0 left-0 right-0 z-50">
@@ -235,7 +298,7 @@ const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className={`nav-link-hover hover:text-[#E83030] px-3 py-2 ${link.active ? 'nav-link-active text-[#E83030]' : ''
+                                className={`nav-link-hover hover:text-[#E83030] px-3 py-2 ${activeSection === link.href.substring(1) ? 'nav-link-active text-[#E83030]' : ''
                                     }`}
                                 style={{
                                     fontWeight: 500,
@@ -249,7 +312,7 @@ const Navbar = () => {
                             </a>
                         ))}
                     </div>
-                    {/* Desktop Login on the right */}
+                    {/* Desktop Login/Dashboard on the right */}
                     <div className="flex-shrink-0">
                         <button
 
@@ -261,10 +324,10 @@ const Navbar = () => {
                                 transform: 'translateY(-20px)'
                             }}
                             onClick={() => {
-                                navigate("/signin")
+                                navigate(token ? "/dashboard" : "/signin")
                             }}
                         >
-                            Login / SignUp
+                            {token ? "Dashboard" : "Login / SignUp"}
                         </button>
                     </div>
                 </div>
@@ -298,14 +361,14 @@ const Navbar = () => {
                     <HamburgerIcon />
                 </button>
 
-                {/* Login button for mobile - top right corner */}
+                {/* Login/Dashboard button for mobile - top right corner */}
                 <button
                     className="fixed top-4 right-4 10 text-xs sm:text-sm font-medium bg-white text-black px-3 py-2 sm:px-4 sm:py-2 cursor-pointer rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors"
                     onClick={() => {
-                        navigate("/signin")
+                        navigate(token ? "/dashboard" : "/signin")
                     }}
                 >
-                    Login / SignUp
+                    {token ? "Dashboard" : "Login / SignUp"}
                 </button>
 
 
@@ -330,7 +393,7 @@ const Navbar = () => {
                                             ? 'translate-x-0 opacity-100'
                                             : '-translate-x-8 opacity-0'
                                         } 
-            ${link.active ? 'text-[#E83030] bg-white/10' : ''}`}
+            ${activeSection === link.href.substring(1) ? 'text-[#E83030] bg-white/10' : ''}`}
                                     style={{
                                         fontWeight: 500,
                                         transition: 'opacity 300ms, transform 300ms',

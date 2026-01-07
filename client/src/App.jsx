@@ -14,6 +14,7 @@ import AboutPage from "./pages/AboutUs";
 import { LandingPage } from "./pages/LandingPage";
 import Responsibility from "./pages/Responsibility";
 import OurTeam from "./pages/OurTeam";
+import Guidelines from "./pages/Guidelines";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,7 +50,14 @@ export default function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/viewprofile" element={<ViewProfile />} />
+          <Route
+            path="/viewprofile"
+            element={
+              <ProtectedRoute>
+                <ViewProfile />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/responsibility" element={<Responsibility />} />
@@ -57,7 +65,15 @@ export default function App() {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/ourteam" element={<OurTeam />} />
-          <Route path = "/leaderboard" element={<Leaderboard/>}/>
+          <Route
+            path="/leaderboard"
+            element={
+              <ProtectedRoute>
+                <Leaderboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/guidelines" element={<Guidelines />} />
         </Routes>
       </Router>
     </AuthProvider>

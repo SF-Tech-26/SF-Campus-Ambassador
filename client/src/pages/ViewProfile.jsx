@@ -1,107 +1,149 @@
-import React from 'react'
-import background from "../assets/Profile-img.JPG"
-const ViewProfile = () => {
+import React, { useContext } from 'react';
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft, User, Mail, Phone, MapPin, Calendar, CreditCard, Award, Star } from 'lucide-react';
+import dashboardBg from "../assets/dashboardbg.jpg";
 
-    const user = {
-        sfid: "SF000001",
-        name: "test-1",
-        state: "UP",
-        city: "Kanpur",
-        college: "IIT KGP",
-        mobile: "1000011561",
-        email: "test1@gmail.com",
-        gender: "M",
-        altEmail: "—",
-        dob: "06-10-2024",
-        yearOfPass: "2026",
-    };
+const ViewProfile = () => {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    if (!user) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-[#0a0a0f] text-white">
+                <p>Please log in to view your profile.</p>
+                <button
+                    onClick={() => navigate("/signin")}
+                    className="ml-4 text-cyan-400 hover:underline"
+                >
+                    Sign In
+                </button>
+            </div>
+        );
+    }
 
     return (
-        <div className="relative min-h-screen text-white bg-cover bg-center bg-no-repeat overflow-hidden"
-          style={
-        { backgroundImage: `url(${background})` }}>          
+        <div className="min-h-screen relative text-white font-sans selection:bg-cyan-500/30">
+            {/* Background */}
+            <div
+                className="absolute inset-0 z-0 bg-cover bg-center bg-fixed"
+                style={{ backgroundImage: `url(${dashboardBg})` }}
+            >
+                <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+            </div>
 
-            {/* Main Container */}
-            <div className="relative z-10 px-6 py-10 md:px-16 lg:px-24">
-                {/* Heading */}
-                <div className="flex justify-center">
-                <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-red-400 via-yellow-600 to-blue-400 text-transparent bg-clip-text">
-                    Your Profile
-                </h1>
-                </div>
-                {/* Profile Card */}
-                
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative z-10 p-6 md:p-12 max-w-6xl mx-auto">
+                <button
+                    onClick={() => navigate("/dashboard")}
+                    className="mb-8 flex items-center text-gray-400 hover:text-white transition-colors group"
+                >
+                    <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    Back to Dashboard
+                </button>
 
-                        {/* Left Column */}
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">SF ID:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.sfid}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">Name:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.name}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">State:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.state}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">City:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.city}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">College:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.college}</p>
-                            </div>
-                        </div>
-
-                        {/* Right Column */}
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">Mobile:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.mobile}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">Email:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.email}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">Gender:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.gender}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">Alternate Email:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.altEmail}</p>
-                            </div>
-
-                            <div>
-                                <label className="block text-l font-semibold text-white-300">Date of Birth:</label>
-                                <p className="bg-white/6 rounded-lg px-4 py-3">{user.dob}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Year of Pass */}
-                    <div className="mt-5 text-center">
-                        <label className="block text-l font-semibold text-white-300 mb-1">Year of Passing:</label>
-                        <p className="bg-white/6 rounded-lg inline-block px-8 py-3 text-lg font-semibold tracking-wide">
-                            {user.yearOfPass}
+                {/* Header Section */}
+                <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-8">
+                    <div className="text-center md:text-left">
+                        <h1 className="font-jaro text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 drop-shadow-lg tracking-wide uppercase">
+                            {user.name}
+                        </h1>
+                        <p className="text-gray-400 text-lg mt-2 tracking-widest uppercase">
+                            {user.por || "Campus Ambassador"}
                         </p>
                     </div>
-                
+
+                    {/* Rank & Score Cards */}
+                    <div className="flex gap-4">
+                        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 min-w-[120px] text-center">
+                            <Star className="w-6 h-6 text-yellow-400 mx-auto mb-2" />
+                            <div className="text-sm text-gray-400 uppercase tracking-wider">Score</div>
+                            <div className="text-2xl font-bold text-white">{user.score || 0}</div>
+                        </div>
+                        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 min-w-[120px] text-center">
+                            <Award className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
+                            <div className="text-sm text-gray-400 uppercase tracking-wider">Rank</div>
+                            <div className="text-2xl font-bold text-white">#{user.rank || "N/A"}</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Details Grid */}
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-jaro text-cyan-400 tracking-wide border-b border-white/10 pb-2">Academic Info</h3>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">SF ID</label>
+                                <div className="flex items-center text-white/90">
+                                    <CreditCard className="w-4 h-4 mr-3 text-cyan-500/70" />
+                                    {user.sf_id || user.sfid || "N/A"}
+                                </div>
+                            </div>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">College</label>
+                                <div className="flex items-center text-white/90">
+                                    <MapPin className="w-4 h-4 mr-3 text-cyan-500/70" />
+                                    {user.college || "N/A"}
+                                </div>
+                            </div>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">Year of Passing</label>
+                                <div className="flex items-center text-white/90">
+                                    <Calendar className="w-4 h-4 mr-3 text-cyan-500/70" />
+                                    {user.yop || user.yearOfPass || "N/A"}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-jaro text-purple-400 tracking-wide border-b border-white/10 pb-2">Contact Info</h3>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">Email</label>
+                                <div className="flex items-center text-white/90 truncate">
+                                    <Mail className="w-4 h-4 mr-3 text-purple-500/70" />
+                                    {user.email || "N/A"}
+                                </div>
+                            </div>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">Mobile</label>
+                                <div className="flex items-center text-white/90">
+                                    <Phone className="w-4 h-4 mr-3 text-purple-500/70" />
+                                    {user.mobile || "N/A"}
+                                </div>
+                            </div>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">Address</label>
+                                <div className="flex items-center text-white/90">
+                                    <MapPin className="w-4 h-4 mr-3 text-purple-500/70" />
+                                    {user.city}, {user.state}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-jaro text-pink-400 tracking-wide border-b border-white/10 pb-2">Personal Info</h3>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">Gender</label>
+                                <div className="flex items-center text-white/90">
+                                    <User className="w-4 h-4 mr-3 text-pink-500/70" />
+                                    {user.gender === 'M' ? 'Male' : user.gender === 'F' ? 'Female' : 'Other'}
+                                </div>
+                            </div>
+                            <div className="group">
+                                <label className="text-sm text-gray-500 block mb-1">Date of Birth</label>
+                                <div className="flex items-center text-white/90">
+                                    <Calendar className="w-4 h-4 mr-3 text-pink-500/70" />
+                                    {user.dob || "N/A"}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     );
-
 }
 
-export default ViewProfile
+export default ViewProfile;

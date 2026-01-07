@@ -1,7 +1,7 @@
 // api/data.js
 import axios from "axios";
 
-const LOCAL = "http://localhost:3000/api/cap";
+const LOCAL = "https://masterapi.springfest.in/api/cap";
 
 export const submitMedia = async (token, data) => {
   const res = await axios.post(`${LOCAL}/media_publicity_contacts`, { token, ...data });
@@ -29,6 +29,6 @@ export const fetchScoreboard = async (token) => {
 };
 
 export const fetchSubmittedData = async (token) => {
-  const res = await axios.post("https://masterapi-springfest.vercel.app/api/cap/receiveCASubmittedData", { token });
+  const res = await axios.post("https://masterapi.springfest.in/api/cap/receiveCASubmittedData", { token });
   return res.data;
 };

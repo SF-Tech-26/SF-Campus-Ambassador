@@ -1,10 +1,6 @@
 import { useState } from "react";
 import "./Guidelines.css";
-import Navbar from "../components/Navbar"; // SAME navbar used in dashboard
-import bg from "../assets/guidelines.jpg";
-import AppNavbar from "../components/AppNavbar";
-
-<AppNavbar />
+import bg from "../assets/guidelines.png";
 
 const guidelinesData = [
   {
@@ -53,41 +49,37 @@ export default function Guidelines() {
   const [openIndex, setOpenIndex] = useState(-1); // nothing open initially
 
   return (
-    <>
-      <Navbar />
+    <div
+      className="guidelines-page"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      <div className="guidelines-overlay" />
 
-      <div
-        className="guidelines-page"
-        style={{ backgroundImage: `url(${bg})` }}
-      >
-        <div className="guidelines-overlay" />
+      <div className="guidelines-container">
+        <h1 className="guidelines-title">GUIDELINES</h1>
 
-        <div className="guidelines-container">
-          <h1 className="guidelines-title">GUIDELINES</h1>
+        {guidelinesData.map((item, index) => (
+          <div key={index} className="guidelines-item">
+            <button
+              className="guidelines-header"
+              onClick={() =>
+                setOpenIndex(openIndex === index ? -1 : index)
+              }
+            >
+              <span>{item.title}</span>
+              <span className="symbol">
+                {openIndex === index ? "−" : "+"}
+              </span>
+            </button>
 
-          {guidelinesData.map((item, index) => (
-            <div key={index} className="guidelines-item">
-              <button
-                className="guidelines-header"
-                onClick={() =>
-                  setOpenIndex(openIndex === index ? -1 : index)
-                }
-              >
-                <span>{item.title}</span>
-                <span className="symbol">
-                  {openIndex === index ? "−" : "+"}
-                </span>
-              </button>
-
-              {openIndex === index && (
-                <div className="guidelines-content">
-                  <p>{item.content}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+            {openIndex === index && (
+              <div className="guidelines-content">
+                <p>{item.content}</p>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 }

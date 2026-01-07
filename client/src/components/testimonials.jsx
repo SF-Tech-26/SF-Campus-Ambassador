@@ -111,7 +111,7 @@ function Testimonials() {
 
                             //styleing for each card-------------------------------
                             let getCardStyle = () => {
-                                let baseStyle = "absolute h-150 w-90 sm:h-120 sm:w-130 bg-black/10 backdrop-blur-md rounded-2xl p-8 transition all duration-500 ease-in-out border border-white/20"
+                                let baseStyle = "absolute h-150 w-90 sm:h-120 sm:w-130 bg-black/10 backdrop-blur-md rounded-2xl p-8 transition all duration-500 ease-in-out border-x border-b border-white/20"
                                 //index depended styling---------------
                                 if (position == 0) {
                                     return (`${baseStyle} opacity-100 translate-x-0 scale:60 sm:scale-100 z-30`);
@@ -183,8 +183,8 @@ function Testimonials() {
                             key={card.id}
                             onClick={() => goToSlide(index)}
                             className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                                    ? 'bg-purple-400 w-8'
-                                    : 'bg-white/30 hover:bg-white/50'
+                                ? 'bg-purple-400 w-8'
+                                : 'bg-white/30 hover:bg-white/50'
                                 }`}
                             aria-label={`Go to testimonial ${index + 1}`}
                         />
