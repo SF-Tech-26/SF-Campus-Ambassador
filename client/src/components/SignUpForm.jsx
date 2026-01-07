@@ -6,6 +6,8 @@ import { AuthContext } from "../context/AuthContext";
 import festBg from "../assets/FB_IMG_1675170342527.jpg";
 import { toast } from "react-toastify";
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 const SignUpForm = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -23,24 +25,52 @@ const SignUpForm = () => {
     addr: "",
     city: "",
     state: "",
+    alt_email: "",
     security_question: "",
     security_answer: "",
   });
 
+  const [captchaToken, setCaptchaToken] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      toast.error("Please complete the CAPTCHA verification");
+      return;
+    }
+
+    // Validate Mobile
+    if (!/^\d{10}$/.test(form.mobile)) {
+      toast.error("Invalid mobile number. Must be 10 digits.");
+      return;
+    }
+
     setLoading(true);
 
     // 🔄 Loading toast
     const toastId = toast.loading("Creating your account...");
 
+    // Construct payload strictly matching backend requirements
+    const payloadData = {
+      ...form,
+      yop: parseInt(form.yop, 10), // Expected: number
+      captcha: captchaToken, // Expected: string
+      addr: form.addr // Ensure addr is included
+    };
+
+    console.log("Payload:", payloadData);
+
     try {
-      const response = await registerCA(form);
+      const response = await registerCA(payloadData);
 
       // Normalize response
       const payload = response?.data ?? response;
@@ -62,12 +92,12 @@ const SignUpForm = () => {
         throw new Error(backendMsg);
       }
 
-      // Auto-login after signup
-      login(token, payload?.user ?? payload ?? {});
+      // Auto-login removed as per request
+      // login(token, payload?.user ?? payload ?? {});
 
       // ✅ Success toast
       toast.update(toastId, {
-        render: "Registration successful 🎉",
+        render: "Registration successful! Please login.",
         type: "success",
         isLoading: false,
         autoClose: 2000,
@@ -75,7 +105,7 @@ const SignUpForm = () => {
 
       // ➡️ Navigate after toast
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/signin");
       }, 1500);
 
     } catch (err) {
@@ -93,6 +123,9 @@ const SignUpForm = () => {
         isLoading: false,
         autoClose: 3000,
       });
+
+      // Reset captcha on error
+      setCaptchaToken(null);
 
     } finally {
       setLoading(false);
@@ -148,18 +181,26 @@ const SignUpForm = () => {
                   ? "password"
                   : key === "dob"
                     ? "date"
-                    : "text"
+                    : key === "yop" || key === "mobile"
+                      ? "number" // Use number input type
+                      : "text"
               }
               name={key}
               placeholder={key.replace(/_/g, " ").toUpperCase()}
               value={form[key]}
               onChange={handleChange}
-              required={
-                !["addr", "security_question", "security_answer"].includes(key)
-              }
+              required={true} // All fields now required based on backend feedback
               className="w-full mb-3 p-3 rounded-xl bg-white/6 placeholder-white/60 border border-white/6 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/25 outline-none transition-all duration-200 text-sm"
             />
           ))}
+        </div>
+
+        <div className="flex justify-center mb-4">
+          <ReCAPTCHA
+            sitekey="6LcfDKsrAAAAALOedfX8knxtsIJpPqnwQ_h3LdjB"
+            onChange={handleCaptchaChange}
+            theme="dark"
+          />
         </div>
 
         <button
