@@ -105,6 +105,15 @@ const FormPage = () => {
       return;
     }
 
+    // Phone number validation
+    if (formData.mobile) {
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(formData.mobile)) {
+        toast.error("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+    }
+
     setLoading(true);
     const toastId = toast.loading("Submitting form...");
 
