@@ -15,59 +15,62 @@ const Leaderboard = () => {
   const [myRank, setMyRank] = useState(null);
   const [myPoints, setMyPoints] = useState(0);
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
+  const loadLeaderboard = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
 
-        // Check if user is logged in
-        if (!token) {
-          setError('Please sign in to view the leaderboard');
-          setLeaderboardData([]);
-          setIsLoading(false);
-          return;
-        }
-
-        const data = await fetchScoreboard(token);
-        console.log('Leaderboard API response:', data);
-
-        // Assume data is an array of objects { name, college, points, email, ... }
-        // Adjust based on actual API response structure if needed
-        const list = Array.isArray(data) ? data : (data.data || []);
-
-        // Sort by points descending just in case
-        const sorted = list.sort((a, b) => b.points - a.points);
-
-        const formatted = sorted.map((item, index) => ({
-          rank: index + 1,
-          name: item.name,
-          college: item.college,
-          points: item.points,
-          email: item.email,
-          isCurrentUser: user && item.email === user.email
-        }));
-
-        setLeaderboardData(formatted);
-
-        if (user) {
-          const myEntry = formatted.find(u => u.email === user.email);
-          if (myEntry) {
-            setMyRank(myEntry.rank);
-            setMyPoints(myEntry.points);
-          }
-        }
-
-      } catch (e) {
-        console.error('Leaderboard error:', e);
-        setError('Unable to load leaderboard. Please try again later.');
+      // Check if user is logged in
+      if (!token) {
+        setError('Please sign in to view the leaderboard');
         setLeaderboardData([]);
-      } finally {
         setIsLoading(false);
+        return;
       }
-    };
 
-    load();
+      const data = await fetchScoreboard(token);
+      console.log('Leaderboard API response:', data);
+
+      // Assume data is an array of objects { name, college, points, email, ... }
+      const list = Array.isArray(data) ? data : (data.data || []);
+
+      // Sort by points descending just in case, ensuring points are numbers
+      const sorted = list.sort((a, b) => Number(b.points) - Number(a.points));
+
+      const formatted = sorted.map((item, index) => ({
+        rank: index + 1,
+        name: item.name,
+        college: item.college,
+        points: Number(item.points),
+        email: item.email,
+        isCurrentUser: user && item.email?.toLowerCase().trim() === user.email?.toLowerCase().trim()
+      }));
+
+      setLeaderboardData(formatted);
+
+      if (user) {
+        const myEntry = formatted.find(u => u.isCurrentUser);
+        if (myEntry) {
+          setMyRank(myEntry.rank);
+          setMyPoints(myEntry.points);
+        } else {
+          // Reset if user not found in top list (or whatever list returns)
+          setMyRank(null);
+          setMyPoints(0);
+        }
+      }
+
+    } catch (e) {
+      console.error('Leaderboard error:', e);
+      setError('Unable to load leaderboard. Please try again later.');
+      setLeaderboardData([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadLeaderboard();
   }, [token, user]);
 
   return (
@@ -87,17 +90,26 @@ const Leaderboard = () => {
         </button>
 
         {/* HEADER */}
-        <div className="text-center mb-14">
-          <div className="flex justify-center items-center gap-4 mb-6">
+        <div className="text-center mb-6">
+          <div className="flex justify-center items-center gap-4 mb-4">
             <Crown className="w-14 h-14 text-yellow-400 animate-bounce" />
             <h1 className="text-6xl font-extrabold text-yellow-400">
               Leaderboard
             </h1>
             <Crown className="w-14 h-14 text-yellow-400 animate-bounce" />
           </div>
-          <p className="text-gray-300 max-w-3xl mx-auto text-lg">
+          <p className="text-gray-300 max-w-3xl mx-auto text-lg mb-8">
             🏆 Compete, Excel, and Rise to the Top! Track your progress and see how you rank.
           </p>
+
+          <button
+            onClick={loadLeaderboard}
+            disabled={isLoading}
+            className="px-6 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full text-sm font-medium transition-colors flex items-center gap-2 mx-auto"
+          >
+            <Sparkles className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+            {isLoading ? 'Refreshing...' : 'Refresh Leaderboard'}
+          </button>
         </div>
 
         {/* MAIN GRID */}
