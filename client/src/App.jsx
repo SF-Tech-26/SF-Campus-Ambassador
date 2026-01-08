@@ -32,6 +32,9 @@ export default function App() {
           closeOnClick
           pauseOnHover
         />
+
+
+        
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
