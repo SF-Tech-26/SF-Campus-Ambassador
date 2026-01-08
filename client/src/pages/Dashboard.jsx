@@ -177,7 +177,7 @@ function Navbar() {
   return (
     <nav className="fixed top-0 w-full flex justify-between items-center p-6 text-white z-50">
       <Link to="/" className="text-2xl font-bold tracking-tighter hover:text-cyan-400 transition font-jaro">
-        SF CA
+        HOME
       </Link>
 
       {token ? (
