@@ -14,6 +14,7 @@ const Leaderboard = () => {
   const [error, setError] = useState(null);
   const [myRank, setMyRank] = useState(null);
   const [myPoints, setMyPoints] = useState(0);
+  const [rawDebug, setRawDebug] = useState(null);
 
   const loadLeaderboard = async () => {
     try {
@@ -29,21 +30,26 @@ const Leaderboard = () => {
       }
 
       const data = await fetchScoreboard(token);
+      setRawDebug(data);
       console.log('Leaderboard API response:', data);
 
       // Assume data is an array of objects { name, college, points, email, ... }
       const list = Array.isArray(data) ? data : (data.data || []);
 
       // Sort by points descending just in case, ensuring points are numbers
-      const sorted = list.sort((a, b) => Number(b.points) - Number(a.points));
+      // Sort by points descending just in case, ensuring points are numbers
+      const sorted = list.sort((a, b) => (Number(b.points) || 0) - (Number(a.points) || 0));
 
       const formatted = sorted.map((item, index) => ({
         rank: index + 1,
         name: item.name,
         college: item.college,
-        points: Number(item.points),
+        points: Number(item.points) || 0,
         email: item.email,
-        isCurrentUser: user && item.email?.toLowerCase().trim() === user.email?.toLowerCase().trim()
+        isCurrentUser: user && (
+          (item.email?.toLowerCase().trim() === user.email?.toLowerCase().trim()) ||
+          (item.sf_id && (user.sf_id || user.sfid) && String(item.sf_id) === String(user.sf_id || user.sfid))
+        )
       }));
 
       setLeaderboardData(formatted);
@@ -54,9 +60,9 @@ const Leaderboard = () => {
           setMyRank(myEntry.rank);
           setMyPoints(myEntry.points);
         } else {
-          // Reset if user not found in top list (or whatever list returns)
-          setMyRank(null);
-          setMyPoints(0);
+          // Fallback to user object data if available, or reset
+          setMyRank(user.rank || null);
+          setMyPoints(user.score || user.points || 0);
         }
       }
 
@@ -91,6 +97,12 @@ const Leaderboard = () => {
 
         {/* HEADER */}
         <div className="text-center mb-6">
+          {rawDebug && (
+            <div className="bg-gray-800 p-4 rounded mb-4 text-xs text-left overflow-auto max-h-60 border border-red-500 whitespace-pre-wrap">
+              DEBUG RAW: {JSON.stringify(rawDebug, null, 2)}
+            </div>
+          )}
+
           <div className="flex justify-center items-center gap-4 mb-4">
             <Crown className="w-14 h-14 text-yellow-400 animate-bounce" />
             <h1 className="text-6xl font-extrabold text-yellow-400">
@@ -113,6 +125,9 @@ const Leaderboard = () => {
         </div>
 
         {/* MAIN GRID */}
+        {/* DEBUG: Remove later */}
+        {/* <div className="text-xs text-gray-500 mb-2">DEBUG: Raw: {JSON.stringify(leaderboardData.length)} items.</div> */}
+
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
 
           {/* LEFT: LEADERBOARD */}

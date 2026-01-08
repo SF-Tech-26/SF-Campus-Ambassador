@@ -134,7 +134,7 @@ const ViewProfile = () => {
                                 <label className="text-sm text-gray-500 block mb-1">Date of Birth</label>
                                 <div className="flex items-center text-white/90">
                                     <Calendar className="w-4 h-4 mr-3 text-pink-500/70" />
-                                    {user.dob || "N/A"}
+                                    {user.dob ? new Date(user.dob).toLocaleDateString('en-GB') : "N/A"}
                                 </div>
                             </div>
                         </div>

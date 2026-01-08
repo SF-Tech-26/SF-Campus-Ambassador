@@ -54,6 +54,14 @@ const SignUpForm = () => {
       return;
     }
 
+    // Validate Year of Passing
+    // Assuming YOP should be a 4-digit year, reasonably recent or near future
+    const yopNum = parseInt(form.yop, 10);
+    if (!/^\d{4}$/.test(form.yop) || yopNum < 1990 || yopNum > 2035) {
+      toast.error("Invalid Year of Passing. Please enter a valid 4-digit year.");
+      return;
+    }
+
     setLoading(true);
 
     // 🔄 Loading toast
@@ -133,7 +141,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="h-screen flex items-center justify-center p-6 relative overflow-hidden">
 
       {/* Background */}
       <div
@@ -165,7 +173,7 @@ const SignUpForm = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="relative z-10 w-full max-w-lg p-8 rounded-3xl bg-white/6 backdrop-blur-md border border-white/8 shadow-2xl text-white"
+        className="relative z-10 w-full max-w-lg p-8 rounded-3xl bg-white/6 backdrop-blur-md border border-white/8 shadow-2xl text-white max-h-[90vh] overflow-y-auto"
       >
         <h2 className="text-3xl font-semibold text-center mb-6">
           Sign Up
