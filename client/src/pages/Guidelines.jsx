@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Guidelines.css";
-import bg from "../assets/guidelines.png";
+import bg from "../assets/guidelines.webp";
 
 const guidelinesData = [
   {

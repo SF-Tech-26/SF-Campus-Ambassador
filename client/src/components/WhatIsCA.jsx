@@ -1,6 +1,6 @@
 import React from 'react'
 
-import whatisca from '../assets/whatisca.jpg'
+import whatisca from '../assets/whatisca.webp'
 
 const WhatIsCA = () => {
     return (

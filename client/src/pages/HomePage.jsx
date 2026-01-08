@@ -12,7 +12,7 @@ import linkedinIcon from '../assets/linkedin.png'
 import youtubeIcon from '../assets/youtube.png'
 import xIcon from '../assets/x.png'
 import mobileBandImage from '../assets/mobileBand-removebg-preview.png'
-import sf_concert from '../assets/sf_concert.png'
+import sf_concert from '../assets/sf_concert.webp'
 import kgp_logo from '../assets/logo-kgp.png'
 import WhatIsCA from '../components/WhatIsCA'
 

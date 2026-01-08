@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './AboutUs.css'; // You might want to clear this file if you move fully to Tailwind
-import aboutUsBackground from '../assets/about-us-copy.png';
+import aboutUsBackground from '../assets/about-us-copy.webp';
 
 // --- Helper Functions ---
 const formatFinalNumber = (numId, value) => {

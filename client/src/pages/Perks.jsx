@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Package, Gift, Medal, Trophy, Briefcase, Ticket } from "lucide-react";
-import perksBg from "../assets/perksbg.jpg";
+import perksBg from "../assets/perksBg.webp";
 
 function Perks() {
   const perks = [

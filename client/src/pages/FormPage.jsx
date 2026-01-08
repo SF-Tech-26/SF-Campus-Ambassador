@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { submitUserData, submitIdea, submitMedia } from "../api/data";
 import { User, Mail, Phone, Building2, IdCard, ArrowLeft, Send, Lightbulb, Tag, FileText, MapPin, Briefcase, Users } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import dashboardBg from "../assets/dashboardbg.jpg";
+import dashboardBg from "../assets/dashboardbg.webp";
 import { toast } from "react-toastify";
 
 const InputGroup = ({ icon: Icon, type = "text", name, placeholder, value, onChange, required = false, isTextArea = false }) => (

@@ -37,18 +37,19 @@ const Leaderboard = () => {
       const list = Array.isArray(data) ? data : (data.data || []);
 
       // Sort by points descending just in case, ensuring points are numbers
-      // Sort by points descending just in case, ensuring points are numbers
-      const sorted = list.sort((a, b) => (Number(b.points) || 0) - (Number(a.points) || 0));
+      // API returns 'score', so we use that. Fallback to 'points' if 'score' is missing.
+      const sorted = list.sort((a, b) => (Number(b.score || b.points) || 0) - (Number(a.score || a.points) || 0));
 
       const formatted = sorted.map((item, index) => ({
         rank: index + 1,
         name: item.name,
         college: item.college,
-        points: Number(item.points) || 0,
+        points: Number(item.score || item.points) || 0,
         email: item.email,
         isCurrentUser: user && (
           (item.email?.toLowerCase().trim() === user.email?.toLowerCase().trim()) ||
-          (item.sf_id && (user.sf_id || user.sfid) && String(item.sf_id) === String(user.sf_id || user.sfid))
+          // Check both snake_case (standard) and camelCase (API response) for SF ID
+          ((item.sf_id || item.sfId) && (user.sf_id || user.sfid) && String(item.sf_id || item.sfId) === String(user.sf_id || user.sfid))
         )
       }));
 
@@ -97,11 +98,7 @@ const Leaderboard = () => {
 
         {/* HEADER */}
         <div className="text-center mb-6">
-          {rawDebug && (
-            <div className="bg-gray-800 p-4 rounded mb-4 text-xs text-left overflow-auto max-h-60 border border-red-500 whitespace-pre-wrap">
-              DEBUG RAW: {JSON.stringify(rawDebug, null, 2)}
-            </div>
-          )}
+
 
           <div className="flex justify-center items-center gap-4 mb-4">
             <Crown className="w-14 h-14 text-yellow-400 animate-bounce" />

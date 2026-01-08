@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, User, Mail, Phone, MapPin, Calendar, CreditCard, Award, Star } from 'lucide-react';
-import dashboardBg from "../assets/dashboardbg.jpg";
+import dashboardBg from "../assets/dashboardbg.webp";
 
 const ViewProfile = () => {
     const { user } = useContext(AuthContext);

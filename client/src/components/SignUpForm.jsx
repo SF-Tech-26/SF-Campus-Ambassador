@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { registerCA } from "../api/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import festBg from "../assets/FB_IMG_1675170342527.jpg";
+import festBg from "../assets/FB_IMG_1675170342527.webp";
 import { toast } from "react-toastify";
 
 import ReCAPTCHA from "react-google-recaptcha";

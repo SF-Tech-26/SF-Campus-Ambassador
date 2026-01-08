@@ -33,7 +33,7 @@
 
 // export default ParticleBackground;
 import React, { useEffect } from "react";
-import festBg from "../assets/FB_IMG_1675170342527.jpg";
+import festBg from "../assets/FB_IMG_1675170342527.webp";
 
 const ParticleBackground = () => {
   useEffect(() => {
