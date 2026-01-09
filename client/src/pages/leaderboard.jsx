@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Trophy, Crown, Star, Sparkles, ArrowLeft } from 'lucide-react';
+import { Trophy, Star, Sparkles, ArrowLeft } from 'lucide-react';
 import LeaderboardCard from '../components/LeaderboardCard';
 import ParticleEffect from '../components/ParticleEffect';
 import { AuthContext } from '../context/AuthContext';
@@ -100,16 +100,9 @@ const Leaderboard = () => {
         <div className="text-center mb-6">
 
 
-          <div className="flex justify-center items-center gap-4 mb-4">
-            <Crown className="w-14 h-14 text-yellow-400 animate-bounce" />
-            <h1 className="text-6xl font-extrabold text-yellow-400">
-              Leaderboard
-            </h1>
-            <Crown className="w-14 h-14 text-yellow-400 animate-bounce" />
-          </div>
-          <p className="text-gray-300 max-w-3xl mx-auto text-lg mb-8">
-            🏆 Compete, Excel, and Rise to the Top! Track your progress and see how you rank.
-          </p>
+          <h1 className="text-6xl font-extrabold text-yellow-400 mb-8">
+            Leaderboard
+          </h1>
         </div>
 
         {/* MAIN GRID */}
