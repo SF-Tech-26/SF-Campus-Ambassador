@@ -22,6 +22,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Leaderboard from "./pages/leaderboard.jsx";
 
 
+
+
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
