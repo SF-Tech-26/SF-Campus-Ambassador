@@ -22,6 +22,8 @@ import Leaderboard from "./pages/leaderboard.jsx";
 
 
 export default function App() {
+
+  
   return (
     <AuthProvider>
       <Router>
