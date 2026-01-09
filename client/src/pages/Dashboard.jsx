@@ -3,16 +3,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { fetchSubmittedData } from "../api/data";
-import { User, Trophy, BookOpen, Crown, CheckCircle } from 'lucide-react';
+import { User, BookOpen, Crown, CheckCircle, Home, LogOut } from 'lucide-react';
 import dashboardBg from "../assets/dashboardbg.webp";
 
-// --- Components ---
 
-import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { token } = useContext(AuthContext);
+  const { token, logout } = useContext(AuthContext);
   const [submittedData, setSubmittedData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -56,9 +54,30 @@ const Dashboard = () => {
     );
   }
 
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <div className="min-h-screen relative text-white selection:bg-cyan-500/30 font-sans">
-      <Navbar />
+      {/* Home & Logout Buttons */}
+      <div className="absolute top-6 right-6 z-20 flex gap-3">
+        <button
+          onClick={() => navigate("/")}
+          className="group flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 hover:bg-white/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+        >
+          <Home className="w-5 h-5 text-white group-hover:text-yellow-400 transition-colors" />
+          <span className="text-sm font-medium text-white">Home</span>
+        </button>
+        <button
+          onClick={handleLogout}
+          className="group flex items-center gap-2 bg-red-500/20 backdrop-blur-md border border-red-500/30 rounded-xl px-4 py-2 hover:bg-red-500/30 transition-all duration-300 hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]"
+        >
+          <LogOut className="w-5 h-5 text-red-400 group-hover:text-red-300 transition-colors" />
+          <span className="text-sm font-medium text-red-400 group-hover:text-red-300">Logout</span>
+        </button>
+      </div>
 
       {/* Background with Overlay */}
       <div
@@ -84,7 +103,6 @@ const Dashboard = () => {
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-12">
           {[
             { title: "View Profile", icon: User, action: () => navigate("/viewprofile") },
-            { title: "#1 Your Standings", icon: Trophy, action: () => { } },
             { title: "Guidelines", icon: BookOpen, action: () => navigate("/guidelines") },
             { title: "Leaderboard", icon: Crown, action: () => navigate("/leaderboard") }
           ].map((item, index) => (

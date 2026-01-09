@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, User, Mail, Phone, MapPin, Calendar, CreditCard, Award, Star } from 'lucide-react';
+import { ArrowLeft, User, Mail, Phone, MapPin, Calendar, CreditCard, Award } from 'lucide-react';
 import dashboardBg from "../assets/dashboardbg.webp";
 
 const ViewProfile = () => {
@@ -52,13 +52,8 @@ const ViewProfile = () => {
                         </p>
                     </div>
 
-                    {/* Rank & Score Cards */}
+                    {/* Rank Card */}
                     <div className="flex gap-4">
-                        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 min-w-[120px] text-center">
-                            <Star className="w-6 h-6 text-yellow-400 mx-auto mb-2" />
-                            <div className="text-sm text-gray-400 uppercase tracking-wider">Score</div>
-                            <div className="text-2xl font-bold text-white">{user.score || 0}</div>
-                        </div>
                         <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 min-w-[120px] text-center">
                             <Award className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
                             <div className="text-sm text-gray-400 uppercase tracking-wider">Rank</div>

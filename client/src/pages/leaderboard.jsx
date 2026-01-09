@@ -110,15 +110,6 @@ const Leaderboard = () => {
           <p className="text-gray-300 max-w-3xl mx-auto text-lg mb-8">
             🏆 Compete, Excel, and Rise to the Top! Track your progress and see how you rank.
           </p>
-
-          <button
-            onClick={loadLeaderboard}
-            disabled={isLoading}
-            className="px-6 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full text-sm font-medium transition-colors flex items-center gap-2 mx-auto"
-          >
-            <Sparkles className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-            {isLoading ? 'Refreshing...' : 'Refresh Leaderboard'}
-          </button>
         </div>
 
         {/* MAIN GRID */}
