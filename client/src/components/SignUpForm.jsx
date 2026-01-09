@@ -214,7 +214,7 @@ const SignUpForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 mt-4 rounded-xl bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 font-semibold tracking-wide hover:scale-[1.02] transition disabled:opacity-60"
+          className="w-full py-3 mt-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-semibold tracking-wide hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 disabled:opacity-60 disabled:hover:scale-100"
         >
           {loading ? "Registering..." : "Register"}
         </button>
