@@ -126,7 +126,26 @@ const SignInForm = () => {
         onSubmit={handleSubmit}
         className="relative z-10 w-full max-w-lg p-8 rounded-3xl bg-white/6 backdrop-blur-md border border-white/8 shadow-2xl text-white"
       >
-        <h2 className="text-3xl font-semibold text-center mb-6">
+        {/* Back Button */}
+        <button
+          type="button"
+          onClick={() => navigate("/")}
+          className="absolute top-4 left-4 flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform duration-200"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span className="text-sm font-medium">Back</span>
+        </button>
+
+        <h2 className="text-3xl font-semibold text-center mb-6 mt-4">
           Sign In
         </h2>
 
