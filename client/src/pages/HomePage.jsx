@@ -13,7 +13,8 @@ import youtubeIcon from '../assets/youtube.png'
 import xIcon from '../assets/x.png'
 import mobileBandImage from '../assets/mobileBand-removebg-preview.png'
 import sf_concert from '../assets/sf_concert.webp'
-import kgp_logo from '../assets/logo-kgp.png'
+import kgp_logo from '../assets/KGP75logo.png'
+import kgp_original_logo from '../assets/logo-kgp.png'
 import WhatIsCA from '../components/WhatIsCA'
 
 const HomePage = () => {
@@ -36,12 +37,27 @@ const HomePage = () => {
             backgroundAttachment: 'scroll'
           }}
         >
-          <div className="absolute left-8 top-24 flex flex-row items-center gap-3 z-10">
+          <div className="absolute left-4 lg:left-6 top-24 z-10">
             <a href="https://springfest.in" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105">
-              <img src={SF_logo} alt="SF Logo" className="w-auto h-20 cursor-pointer" />
+              <img src={SF_logo} alt="SF Logo" className="w-auto h-10 lg:h-12 cursor-pointer" />
+            </a>
+          </div>
+
+          {/* KGP Logos - Top Right Corner */}
+          <div className="absolute right-2 lg:right-4 top-24 z-20 flex items-center gap-4">
+            <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105">
+              <img
+                src={kgp_logo}
+                alt="KGP75 Logo"
+                className="w-auto h-10 lg:h-12 xl:h-14 2xl:h-16 cursor-pointer drop-shadow-lg"
+              />
             </a>
             <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105">
-              <img src={kgp_logo} alt="KGP Logo" className="w-auto h-auto max-w-[120px] cursor-pointer" />
+              <img
+                src={kgp_original_logo}
+                alt="KGP Original Logo"
+                className="w-auto h-10 lg:h-12 xl:h-14 2xl:h-16 cursor-pointer drop-shadow-lg"
+              />
             </a>
           </div>
 
@@ -64,14 +80,12 @@ const HomePage = () => {
 
           {/* Login / SignUp Button - Flashy Animated Version */}
           <div
-            className="absolute"
+            className="absolute inset-x-0 flex justify-center"
             style={{
               animation: 'buttonReveal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
               animationDelay: '0.6s',
               opacity: 0,
-              top: '65%',
-              left: '60%',
-              transform: 'translateX(-50%)'
+              top: '65%'
             }}
           >
             <button
@@ -133,7 +147,7 @@ const HomePage = () => {
             <img
               src={BandImage}
               alt="Band"
-              className="w-[320px] lg:w-[380px] xl:w-[420px] 2xl:w-[480px] max-w-[90vw] h-auto"
+              className="w-[240px] lg:w-[280px] xl:w-[320px] 2xl:w-[360px] max-w-[90vw] h-auto"
             />
           </div>
           <style>
@@ -237,7 +251,7 @@ const HomePage = () => {
           <img
             src={Disc}
             alt="Disc Logo"
-            className="hidden lg:block absolute -right-55 top-28 cursor-pointer w-auto h-auto"
+            className="hidden lg:block absolute -right-40 lg:-right-48 xl:-right-52 2xl:-right-56 top-48 lg:top-52 xl:top-56 cursor-pointer w-[280px] lg:w-[320px] xl:w-[360px] 2xl:w-[400px] h-auto"
             style={{
               animation: 'spin 8s linear infinite',
               transformOrigin: 'center',
@@ -269,14 +283,21 @@ const HomePage = () => {
                 <img
                   src={SF_logo}
                   alt="SF Logo"
-                  className="w-auto h-20 sm:h-24 cursor-pointer"
+                  className="w-auto h-10 sm:h-12 cursor-pointer"
                 />
               </a>
               <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
                 <img
                   src={kgp_logo}
                   alt="KGP Logo"
-                  className="w-auto h-auto max-w-[120px] sm:max-w-[140px] cursor-pointer"
+                  className="w-auto h-10 sm:h-12 cursor-pointer drop-shadow-lg"
+                />
+              </a>
+              <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
+                <img
+                  src={kgp_original_logo}
+                  alt="KGP Original Logo"
+                  className="w-auto h-10 sm:h-12 cursor-pointer drop-shadow-lg"
                 />
               </a>
             </div>
@@ -310,12 +331,39 @@ const HomePage = () => {
           </div>
         </div>
 
+        <div
+          className="hidden lg:flex absolute bottom-10 left-1/2 transform -translate-x-1/2 z-[40] flex-row items-center justify-between w-[40vw]"
+        >
+          {[
+            { icon: facebookIcon, link: "https://www.facebook.com/springfest.iitkgp/", alt: "Facebook" },
+            { icon: youtubeIcon, link: "https://www.youtube.com/@SpringFest.", alt: "YouTube" },
+            { icon: instagramIcon, link: "https://www.instagram.com/iitkgp.springfest/", alt: "Instagram" },
+            { icon: xIcon, link: "https://x.com/springfest_kgp", alt: "X" },
+            { icon: linkedinIcon, link: "https://in.linkedin.com/company/spring-fest", alt: "LinkedIn" },
+          ].map(({ icon, link, alt }) => (
+            <a
+              key={alt}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform group"
+            >
+              <img
+                src={icon}
+                alt={alt}
+                className="w-8 h-8 transition duration-200 group-hover:scale-110 group-hover:filter group-hover:brightness-0 group-hover:invert group-hover:sepia group-hover:hue-rotate-[330deg] group-hover:saturate-[7] group-hover:drop-shadow-[0_0_6px_#E83030]"
+              />
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* What is CA Section */}
       <WhatIsCA />
+
+      {/* Mobile Social Icons - Restored */}
       <div
-        className="absolute bottom-6 right-6 z-[40] flex flex-row items-center gap-8"
+        className="lg:hidden absolute bottom-6 right-6 z-[40] flex flex-row items-center gap-8"
       >
         {[
           { icon: facebookIcon, link: "https://www.facebook.com/springfest.iitkgp/", alt: "Facebook" },
@@ -339,6 +387,7 @@ const HomePage = () => {
           </a>
         ))}
       </div>
+
     </div>
   )
 }

@@ -292,7 +292,7 @@ const Navbar = () => {
         <nav className="font-jaro fixed top-0 left-0 right-0 z-50">
             {/* Horizontal navbar for lg screens and up */}
             <div className="hidden lg:block bg-black text-white py-4 border-b border-gray-700 animate-slideDown"  >
-                <div className="w-full flex items-center justify-between px-8">
+                <div className="w-full flex items-center justify-center px-8">
                     <div className="flex items-center space-x-8 text-xl text-gray-300">
                         {navLinks.map((link) => (
                             <a
@@ -311,24 +311,6 @@ const Navbar = () => {
                                 {link.name}
                             </a>
                         ))}
-                    </div>
-                    {/* Desktop Login/Dashboard on the right */}
-                    <div className="flex-shrink-0">
-                        <button
-
-                            className="inline-block text-m font-medium bg-white text-black px-4 py-2 rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors cur"
-                            style={{
-                                animation: 'slideDown 0.5s ease-out forwards',
-                                animationDelay: `${navLinks.length * 100}ms`,
-                                opacity: 0,
-                                transform: 'translateY(-20px)'
-                            }}
-                            onClick={() => {
-                                navigate(token ? "/dashboard" : "/signin")
-                            }}
-                        >
-                            {token ? "Dashboard" : "Login / SignUp"}
-                        </button>
                     </div>
                 </div>
             </div>
@@ -359,16 +341,6 @@ const Navbar = () => {
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                     <HamburgerIcon />
-                </button>
-
-                {/* Login/Dashboard button for mobile - top right corner */}
-                <button
-                    className="fixed top-4 right-4 10 text-xs sm:text-sm font-medium bg-white text-black px-3 py-2 sm:px-4 sm:py-2 cursor-pointer rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors"
-                    onClick={() => {
-                        navigate(token ? "/dashboard" : "/signin")
-                    }}
-                >
-                    {token ? "Dashboard" : "Login / SignUp"}
                 </button>
 
 

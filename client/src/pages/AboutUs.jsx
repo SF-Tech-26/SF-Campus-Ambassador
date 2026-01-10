@@ -110,7 +110,7 @@ function AboutUs() {
                         <span className="font-semibold text-white">IIT Kharagpur</span> hosts one of the largest Social and Cultural Fests in India.
                         Embodying the true spirit of youth, Spring Fest provides a platform
                         for young talent from all over India to showcase their varied talents.
-                        As we enter into the <span className="text-orange-400 font-bold">66th edition</span>, all we are looking forward to is to
+                        As we enter into the <span className="text-orange-400 font-bold">67th edition</span>, all we are looking forward to is to
                         leave behind a legacy of exquisite experiences. With the <span className="text-blue-400 font-semibold">Campus Ambassador Program</span>, you get a chance to be an extended part of the
                         Organizing team of Spring Fest 2026.
                     </p>
