@@ -3,10 +3,29 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, User, Mail, Phone, MapPin, Calendar, CreditCard, Award } from 'lucide-react';
 import dashboardBg from "../assets/dashboardbg.webp";
+import { fetchSubmittedData } from "../api/data";
+import { useEffect } from "react";
 
 const ViewProfile = () => {
-    const { user } = useContext(AuthContext);
+    const { user, token } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    // Debugging: Log the user object to see what fields are available
+    console.log("Current User Object in ViewProfile:", user);
+
+    useEffect(() => {
+        const getData = async () => {
+            if (token) {
+                try {
+                    const data = await fetchSubmittedData(token);
+                    console.log("Response from fetchSubmittedData:", data);
+                } catch (error) {
+                    console.error("Error fetching submitted data:", error);
+                }
+            }
+        };
+        getData();
+    }, [token]);
 
     if (!user) {
         return (
@@ -72,7 +91,7 @@ const ViewProfile = () => {
                                 <label className="text-sm text-gray-500 block mb-1">SF ID</label>
                                 <div className="flex items-center text-white/90">
                                     <CreditCard className="w-4 h-4 mr-3 text-cyan-500/70" />
-                                    {user.sf_id || user.sfid || user.SF_ID || user.sf_id_if_registered || "N/A"}
+                                    {user.sfId || user.sf_id || user.sfid || user.SF_ID || user.sf_id_if_registered || "N/A"}
                                 </div>
                             </div>
                             <div className="group">
