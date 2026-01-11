@@ -72,7 +72,7 @@ const ViewProfile = () => {
                                 <label className="text-sm text-gray-500 block mb-1">SF ID</label>
                                 <div className="flex items-center text-white/90">
                                     <CreditCard className="w-4 h-4 mr-3 text-cyan-500/70" />
-                                    {user.sf_id || user.sfid || "N/A"}
+                                    {user.sf_id || user.sfid || user.SF_ID || user.sf_id_if_registered || "N/A"}
                                 </div>
                             </div>
                             <div className="group">

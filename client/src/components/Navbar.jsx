@@ -343,6 +343,16 @@ const Navbar = () => {
                     <HamburgerIcon />
                 </button>
 
+                {/* Login/Dashboard button for mobile - top right corner */}
+                <button
+                    className="fixed top-4 right-4 z-50 text-xs sm:text-sm font-medium bg-white text-black px-3 py-2 sm:px-4 sm:py-2 cursor-pointer rounded-md shadow-sm hover:bg-[#CABC8E] transition-colors"
+                    onClick={() => {
+                        navigate(token ? "/dashboard" : "/signin")
+                    }}
+                >
+                    {token ? "Dashboard" : "Login / SignUp"}
+                </button>
+
 
                 {/* Sidebar container */}
                 <div
