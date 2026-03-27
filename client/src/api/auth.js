@@ -12,3 +12,8 @@ export const loginCA = async (data) => {
   const res = await axios.post(`${BASE_URL}/login`, data);
   return res.data;
 };
+
+export const fetchUserProfile = async (token) => {
+  const res = await axios.post(`${BASE_URL}/profile`, { token });
+  return res.data;
+};

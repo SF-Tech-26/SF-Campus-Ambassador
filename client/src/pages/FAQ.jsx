@@ -1,5 +1,4 @@
 import React from "react";
-import ParticleEffect from "../components/ParticleEffect";
 import FAQAccordion from "../components/FAQAccordion";
 
 export default function FAQ() {
@@ -12,8 +11,8 @@ export default function FAQ() {
   ];
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top_left,_#0f172a,_#0b0f1a)]">
-      <ParticleEffect />
+    <div id="faq" className="relative min-h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top_left,_#0f172a,_#0b0f1a)]">
+     
 
       <main className="relative z-10 flex items-start justify-center py-24 px-6">
         <section className="w-full max-w-4xl p-10 rounded-3xl bg-gradient-to-br from-black/60 via-slate-900/60 to-black/60 border border-white/6 backdrop-blur-lg text-white shadow-2xl">
