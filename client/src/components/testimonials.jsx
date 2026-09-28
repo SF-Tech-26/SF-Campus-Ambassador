@@ -23,7 +23,7 @@ function Testimonials() {
         {
             id: 2,
             title: "",
-            description: "I worked as a campus ambassador of my college at spring Fest 2025, IIT kharagpur. I really enjoyed working with the people of this organisation. I had lot of fun tasks to do and really liked doing them all. I would like to thank spring fest for giving me this opportunity.",
+            description: "I worked as a campus ambassador of my college at Spring Fest 2026, IIT kharagpur. I really enjoyed working with the people of this organisation. I had lot of fun tasks to do and really liked doing them all. I would like to thank spring fest for giving me this opportunity.",
             author: "Aditya Saurav",
             role: "",
             image: Aditya,
@@ -31,7 +31,7 @@ function Testimonials() {
         {
             id: 3,
             title: "",
-            description: "Spring fest 2025 was an amazing experience for me. It was wonderful to be a part of something this big. The diversity of events made the fest, a lot more fun and engaging making it a memorable experience. Hope to be a part of Spring Fest.",
+            description: "Spring fest 2026 was an amazing experience for me. It was wonderful to be a part of something this big. The diversity of events made the fest, a lot more fun and engaging making it a memorable experience. Hope to be a part of Spring Fest.",
             author: "Raghav Dogra",
             role: "",
             image: Raghav,

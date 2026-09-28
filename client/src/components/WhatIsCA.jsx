@@ -1,6 +1,7 @@
 import React from 'react'
 
 import whatisca from '../assets/whatisca.webp'
+import { FEST_YEAR } from '../config/fest'
 
 const WhatIsCA = () => {
     return (
@@ -41,10 +42,10 @@ const WhatIsCA = () => {
                 {/* Description */}
                 <p className="text-gray-300 text-lg sm:text-xl lg:text-2xl leading-relaxed font-light">
                     As part of the student campus ambassador program{' '}
-                    <span className="text-[#CABC8E] font-medium">SPRING FEST 2026</span>{' '}
+                    <span className="text-[#CABC8E] font-medium">SPRING FEST {FEST_YEAR}</span>{' '}
                     offers students the chance to represent and promote the organization at their colleges and universities.
                     Their responsibilities comprise developing our presence and promoting{' '}
-                    <span className="text-[#CABC8E] font-medium">SPRING FEST 2026</span>{' '}
+                    <span className="text-[#CABC8E] font-medium">SPRING FEST {FEST_YEAR}</span>{' '}
                     events among students and educators by serving as a link between their colleges and us.
                 </p>
 

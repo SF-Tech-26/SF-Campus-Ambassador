@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './AboutUs.css'; // You might want to clear this file if you move fully to Tailwind
 import aboutUsBackground from '../assets/about-us-copy.webp';
+import { FEST_YEAR, FEST_EDITION_LABEL } from '../config/fest';
 
 // --- Helper Functions ---
 const formatFinalNumber = (numId, value) => {
@@ -110,9 +111,9 @@ function AboutUs() {
                         <span className="font-semibold text-white">IIT Kharagpur</span> hosts one of the largest Social and Cultural Fests in India.
                         Embodying the true spirit of youth, Spring Fest provides a platform
                         for young talent from all over India to showcase their varied talents.
-                        As we enter into the <span className="text-orange-400 font-bold">67th edition</span>, all we are looking forward to is to
+                        As we enter into the <span className="text-orange-400 font-bold">{FEST_EDITION_LABEL}</span>, all we are looking forward to is to
                         leave behind a legacy of exquisite experiences. With the <span className="text-blue-400 font-semibold">Campus Ambassador Program</span>, you get a chance to be an extended part of the
-                        Organizing team of Spring Fest 2026.
+                        Organizing team of Spring Fest {FEST_YEAR}.
                     </p>
                 </div>
 

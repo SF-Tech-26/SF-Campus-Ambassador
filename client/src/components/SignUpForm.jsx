@@ -1,5 +1,5 @@
 // components/SignUpForm.jsx
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { registerCA } from "../api/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -31,13 +31,24 @@ const SignUpForm = () => {
   });
 
   const [captchaToken, setCaptchaToken] = useState(null);
+  const recaptchaRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleCaptchaChange = (token) => {
+    // react-google-recaptcha passes null when the token expires or is cleared.
     setCaptchaToken(token);
+  };
+
+  // A reCAPTCHA token is single-use and expires ~2 minutes after it is solved.
+  // Clearing state alone leaves the checkbox visibly ticked while captchaToken
+  // is null, so every retry reports "Please complete the CAPTCHA verification"
+  // with no way to recover short of reloading the page. Reset the widget too.
+  const resetCaptcha = () => {
+    recaptchaRef.current?.reset();
+    setCaptchaToken(null);
   };
 
   const handleSubmit = async (e) => {
@@ -132,8 +143,8 @@ const SignUpForm = () => {
         autoClose: 3000,
       });
 
-      // Reset captcha on error
-      setCaptchaToken(null);
+      // Reset captcha on error - the token is spent either way.
+      resetCaptcha();
 
     } finally {
       setLoading(false);
@@ -224,8 +235,11 @@ const SignUpForm = () => {
 
         <div className="flex justify-center mb-4">
           <ReCAPTCHA
+            ref={recaptchaRef}
             sitekey="6LcfDKsrAAAAALOedfX8knxtsIJpPqnwQ_h3LdjB"
             onChange={handleCaptchaChange}
+            onExpired={() => setCaptchaToken(null)}
+            onErrored={() => setCaptchaToken(null)}
             theme="dark"
           />
         </div>
