@@ -264,7 +264,7 @@ const HomePage = () => {
 
         {/* Mobile */}
         <div
-          className="lg:hidden flex flex-col items-start justify-center px-6 relative min-h-screen overflow-hidden"
+          className="lg:hidden flex flex-col items-center justify-between px-6 relative min-h-screen overflow-hidden py-20"
           style={{
             backgroundImage: `url(${sf_concert})`,
             backgroundSize: 'cover',
@@ -276,34 +276,35 @@ const HomePage = () => {
           {/* Overlay for contrast */}
           <div className="absolute inset-0 bg-black/40"></div>
 
-          {/* Content Layer */}
-          <div className="relative z-10 flex flex-col items-start pt-20">
-            <div className="flex flex-row items-center gap-4 mb-6">
-              <a href="https://springfest.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
-                <img
-                  src={SF_logo}
-                  alt="SF Logo"
-                  className="w-auto h-10 sm:h-12 cursor-pointer"
-                />
-              </a>
-              <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
-                <img
-                  src={kgp_logo}
-                  alt="KGP Logo"
-                  className="w-auto h-10 sm:h-12 cursor-pointer drop-shadow-lg"
-                />
-              </a>
-              <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
-                <img
-                  src={kgp_original_logo}
-                  alt="KGP Original Logo"
-                  className="w-auto h-10 sm:h-12 cursor-pointer drop-shadow-lg"
-                />
-              </a>
-            </div>
+          {/* Top Section: Logos - Top Right Corner (same level as hamburger) */}
+          <div className="absolute top-4 right-4 z-10 flex flex-row items-center gap-2">
+            <a href="https://springfest.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
+              <img
+                src={SF_logo}
+                alt="SF Logo"
+                className="w-auto h-10 sm:h-12 cursor-pointer"
+              />
+            </a>
+            <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
+              <img
+                src={kgp_logo}
+                alt="KGP Logo"
+                className="w-auto h-10 sm:h-12 cursor-pointer drop-shadow-lg"
+              />
+            </a>
+            <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform active:scale-95">
+              <img
+                src={kgp_original_logo}
+                alt="KGP Original Logo"
+                className="w-auto h-10 sm:h-12 cursor-pointer drop-shadow-lg"
+              />
+            </a>
+          </div>
 
+          {/* Campus Ambassador Text */}
+          <div className="w-full flex justify-center mt-16 z-10">
             <div
-              className="font-jaro text-5xl sm:text-5xl font-extrabold text-white tracking-wider drop-shadow-lg mb-6 z-10 w-full leading-tight"
+              className="font-jaro text-5xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-wider drop-shadow-lg leading-tight text-center"
               style={{
                 animation: 'glitchReveal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
                 animationDelay: '0.3s',
@@ -316,18 +317,103 @@ const HomePage = () => {
               CAMPUS<br />
               AMBASSADOR
             </div>
+          </div>
 
-            <img
-              src={mobileBandImage}
-              alt="Band"
-              className="w-[300px] max-w-full mt-4"
+          {/* Middle Section: Login Button */}
+          <div
+            className="relative z-20 flex flex-col items-center"
+            style={{
+              animation: 'buttonReveal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+              animationDelay: '0.6s',
+              opacity: 0
+            }}
+          >
+            <button
+              className="group relative font-jaro text-xl sm:text-2xl font-medium px-6 sm:px-8 py-2 sm:py-3 rounded-lg cursor-pointer overflow-hidden"
               style={{
-                animation: 'slideInLeft 1.2s ease-out forwards',
-                animationDelay: '0.3s',
-                transform: 'translateX(-100%)',
-                opacity: 0
+                background: 'linear-gradient(135deg, #CABC8E 0%, #E8D9A8 50%, #CABC8E 100%)',
+                boxShadow: '0 0 20px rgba(202, 188, 142, 0.4), 0 0 40px rgba(202, 188, 142, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3)',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease'
               }}
-            />
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(202, 188, 142, 0.6), 0 0 60px rgba(202, 188, 142, 0.4), 0 12px 40px rgba(0, 0, 0, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(202, 188, 142, 0.4), 0 0 40px rgba(202, 188, 142, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3)';
+              }}
+              onClick={() => {
+                navigate(token ? "/dashboard" : "/signin")
+              }}
+            >
+              {/* Animated shimmer overlay */}
+              <span
+                className="absolute inset-0 opacity-30"
+                style={{
+                  background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%)',
+                  animation: 'shimmer 2.5s infinite',
+                  transform: 'skewX(-20deg)'
+                }}
+              />
+
+              {/* Glowing pulse ring */}
+              <span
+                className="absolute inset-0 rounded-lg"
+                style={{
+                  border: '2px solid rgba(202, 188, 142, 0.6)',
+                  animation: 'pulseRing 2s infinite'
+                }}
+              />
+
+              {/* Button text */}
+              <span className="relative z-10 text-black drop-shadow-sm">
+                {token ? "Dashboard" : "Login / SignUp"}
+              </span>
+            </button>
+          </div>
+
+          {/* Bottom Section: Band Image */}
+          <img
+            src={mobileBandImage}
+            alt="Band"
+            className="relative z-10 w-[350px] max-w-[90%]"
+            style={{
+              animation: 'slideInLeft 1.2s ease-out forwards',
+              animationDelay: '0.3s',
+              transform: 'translateX(-100%)',
+              opacity: 0
+            }}
+          />
+
+          {/* Social Icons - absolute so they stay at the bottom of the hero.
+              Previously fixed, which pinned them to the viewport and left them
+              floating over every section while scrolling. */}
+          <div
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[40] flex flex-row items-center justify-evenly w-[90vw] max-w-[320px] sm:max-w-[400px] md:max-w-[500px]"
+          >
+          {[
+            { icon: facebookIcon, link: "https://www.facebook.com/springfest.iitkgp/", alt: "Facebook" },
+            { icon: youtubeIcon, link: "https://www.youtube.com/@SpringFest.", alt: "YouTube" },
+            { icon: instagramIcon, link: "https://www.instagram.com/iitkgp.springfest/", alt: "Instagram" },
+            { icon: xIcon, link: "https://x.com/springfest_kgp", alt: "X" },
+            { icon: linkedinIcon, link: "https://in.linkedin.com/company/spring-fest", alt: "LinkedIn" },
+          ].map(({ icon, link, alt }) => (
+            <a
+              key={alt}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform group"
+            >
+              <img
+                src={icon}
+                alt={alt}
+                className="w-8 h-8 transition duration-200 group-hover:scale-110 group-hover:filter group-hover:brightness-0 group-hover:invert group-hover:sepia group-hover:hue-rotate-[330deg] group-hover:saturate-[7] group-hover:drop-shadow-[0_0_6px_#E83030]"
+              />
+            </a>
+          ))}
           </div>
         </div>
 
@@ -361,32 +447,6 @@ const HomePage = () => {
       {/* What is CA Section */}
       <WhatIsCA />
 
-      {/* Mobile Social Icons - Restored */}
-      <div
-        className="lg:hidden absolute bottom-6 right-6 z-[40] flex flex-row items-center gap-8"
-      >
-        {[
-          { icon: facebookIcon, link: "https://www.facebook.com/springfest.iitkgp/", alt: "Facebook" },
-          { icon: youtubeIcon, link: "https://www.youtube.com/@SpringFest.", alt: "YouTube" },
-          { icon: instagramIcon, link: "https://www.instagram.com/iitkgp.springfest/", alt: "Instagram" },
-          { icon: xIcon, link: "https://x.com/springfest_kgp", alt: "X" },
-          { icon: linkedinIcon, link: "https://in.linkedin.com/company/spring-fest", alt: "LinkedIn" },
-        ].map(({ icon, link, alt }) => (
-          <a
-            key={alt}
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-transform group"
-          >
-            <img
-              src={icon}
-              alt={alt}
-              className="w-8 h-8 transition duration-200 group-hover:scale-110 group-hover:filter group-hover:brightness-0 group-hover:invert group-hover:sepia group-hover:hue-rotate-[330deg] group-hover:saturate-[7] group-hover:drop-shadow-[0_0_6px_#E83030]"
-            />
-          </a>
-        ))}
-      </div>
 
     </div>
   )
