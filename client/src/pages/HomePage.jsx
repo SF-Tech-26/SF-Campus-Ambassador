@@ -45,13 +45,13 @@ const HomePage = () => {
 
           {/* KGP Logos - Top Right Corner */}
           <div className="absolute right-2 lg:right-4 top-24 z-20 flex items-center gap-4">
-            <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105">
+            {/* <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105">
               <img
                 src={kgp_logo}
                 alt="KGP75 Logo"
                 className="w-auto h-10 lg:h-12 xl:h-14 2xl:h-16 cursor-pointer drop-shadow-lg"
               />
-            </a>
+            </a> */}
             <a href="https://www.iitkgp.ac.in" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105">
               <img
                 src={kgp_original_logo}
@@ -251,7 +251,7 @@ const HomePage = () => {
           <img
             src={Disc}
             alt="Disc Logo"
-            className="hidden lg:block absolute -right-40 lg:-right-48 xl:-right-52 2xl:-right-56 top-48 lg:top-52 xl:top-56 cursor-pointer w-[280px] lg:w-[320px] xl:w-[360px] 2xl:w-[400px] h-auto"
+            className="hidden lg:block absolute -right-40 lg:-right-48 xl:-right-52 2xl:-right-56 top-48 lg:top-52 xl:top-56 pointer-events-none w-[280px] lg:w-[320px] xl:w-[360px] 2xl:w-[400px] h-auto"
             style={{
               animation: 'spin 8s linear infinite',
               transformOrigin: 'center',

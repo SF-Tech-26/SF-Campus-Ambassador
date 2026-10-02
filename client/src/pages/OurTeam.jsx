@@ -21,7 +21,7 @@ const ROLE = "Events and Public Relations";
 // of their links exist. email/facebook are still pending for everyone.
 const TEAM = [
   {
-    name: "Manish Biswal",
+    name: "MANISH BISWAL",
     image: manish,
     whatsapp: "916372738482",
     email: "",
@@ -30,7 +30,7 @@ const TEAM = [
     facebook: "",
   },
   {
-    name: "Raj Kadam",
+    name: "RAJ KADAM",
     image: raj,
     whatsapp: "917038469944",
     email: "",
@@ -39,7 +39,7 @@ const TEAM = [
     facebook: "",
   },
   {
-    name: "Prayag Choudhary",
+    name: "PRAYAG CHOUDHARY",
     image: prayag,
     whatsapp: "918003506629",
     email: "",
@@ -48,7 +48,7 @@ const TEAM = [
     facebook: "",
   },
   {
-    name: "Devansh Paliwal",
+    name: "DEVANSH PALIWAL",
     image: devansh,
     whatsapp: "918830297574",
     email: "",
